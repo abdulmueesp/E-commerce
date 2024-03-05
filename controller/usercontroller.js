@@ -5,15 +5,16 @@ const smtpTransport=require("nodemailer-smtp-transport")
 const nodemailer=require("nodemailer")
 
 const signupdatabase=require("../model/signup")
+const bannerdatabase=require("../model/banner")
+const productdatabase=require("../model/product")
 require("dotenv").config()
 
 // const{body,validationResult}=require("express-validator")
 const AccountSID="AC8ce275b17a798e58d9f11078e20ea4b1"
-const AuthToken="baf9a7e39308ff589bbc93219d85539c";
+const AuthToken="0cbf29d086e42ad840e7c7efe519defe";
 const verifySid = "VAb457c2b12a4621b7941e060282c1a1a3"
 const client=require("twilio")(AccountSID,AuthToken)
 var phonerare;
-let emailrare;
 
 const sendResetPassemail=async(email,otp)=>{
   const user=await signupdatabase.findOne({email})
@@ -98,7 +99,25 @@ module.exports={
 
      },
      loginGET:(req,res)=>{
+      
         res.render("login")
+    
+     },
+     loginPOST:async(req,res)=>{
+           
+         const{email,password}=req.body
+          const data=await signupdatabase.findOne({email:email})
+              req.session.email=data
+          if(!data){
+               res.send("username not found")
+          }else{
+              if(data.password==password){
+                res.redirect("/userhome")
+              }else{
+                res.send("wrong password")
+              }
+          }
+
      },
      forgetpsGET:(req,res)=>{
       res.render("forgetps")
@@ -116,8 +135,8 @@ module.exports={
 
         }
         await sendResetPassemail(email,otp);
-        emailrare=otp
-        req.session.email=email
+        req.session.otp=otp
+        req.session.email1=email
         
     
         res.redirect("/forgetotp")
@@ -130,10 +149,10 @@ module.exports={
       res.render("forgetotp")
      },
      forgetotpPOST:async(req,res)=>{
-
+        const otps=req.session.otp
       const{otp}=req.body
      
-      if(emailrare==otp){
+      if(otps==otp){
         res.redirect("/resetpass")
         console.log("email otp verified"); 
       }else{
@@ -147,7 +166,7 @@ module.exports={
      },
      resetpassPOST:async(req,res)=>{
           const{password,password2}=req.body
-          const email=req.session.email
+          const email=req.session.email1
           console.log(email)
           if(password==password2){
               console.log("entered update section");
@@ -161,5 +180,18 @@ module.exports={
                   res.redirect("/resetpass")
           }
      },
+        userhomeGET:async(req,res)=>{
+          const productdata=await productdatabase.find().limit(3)
+          const bandata=await bannerdatabase.find()
+          
+          res.render("userHomePage",{bandata,productdata})
+         
 
+        },
+        productdeaileGET:async(req,res)=>{
+          const id=req.params.id
+          const datas=await productdatabase.findById(id)
+          res.render("productdeatilepage",{datas})
+        },
+       
 }
