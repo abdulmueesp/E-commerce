@@ -248,7 +248,7 @@
                     
                     <a
                       class="position-absolute deleteBtn"
-                      href="/userCartDelete/id"
+                      href="" onclick="deletecart(event,'<%=ok.id.id%>')"
                     >
                       <svg
                         width="13"
@@ -899,6 +899,7 @@
 
     <!-- custom js -->
     <script src="/js/userCart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- end of custom js -->
     <!-- fontawesome -->
     <script
@@ -913,5 +914,6 @@
       crossorigin="anonymous"
     ></script>
     <!--end of Bootstrap script file -->
+
   </body>
 </html>

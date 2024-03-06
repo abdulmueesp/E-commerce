@@ -193,5 +193,8 @@ module.exports={
           const datas=await productdatabase.findById(id)
           res.render("productdeatilepage",{datas})
         },
-       
+       productsHomeGET:async(req,res)=>{
+          const products=await productdatabase.find()
+           res.render("producthome",{products})
+       }
 }

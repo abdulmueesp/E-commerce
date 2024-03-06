@@ -19,7 +19,8 @@ const{
     resetpassPOST,
     loginPOST,
     userhomeGET,
-    productdeaileGET
+    productdeaileGET,
+    productsHomeGET
 }=require("../controller/usercontroller");
 
 router.get("/signup",signupGET)
@@ -43,9 +44,10 @@ router.get("/productdeatile/:id",productdeaileGET)
 
 router.get("/usercart",cartcontroller.usercartGET)
 router.get("/addcart",cartcontroller.addcartGET)
+router.delete("/deletecart",cartcontroller.cartDELETE)
 
 
-
+router.get("/productshome",productsHomeGET)
 
 
 

@@ -13,7 +13,7 @@
     />
     <!-- end of Bootstrap css cdn link -->
     <!-- Style css -->
-    <link rel="stylesheet" href="/css/productDetailPAge.css" />
+    <link rel="stylesheet" href="/css/productshome.css" />
     <!-- end of Style css -->
   </head>
   <body>
@@ -261,189 +261,270 @@
           </div>
         </div>
       </div>
-    
-      <div class="container-fluid">
-       
-        <div class="row">
-          <div class="col-12 padding">
-            <div class="imgMain">
-              <div
-                class="d-flex justify-content-center align-items-center position-relative demo-area mainImg"
-              >
-                <!-- <div class="demo-area position-relative">
-                  
-                </div> -->
-                <img
-                class="demo-trigger mainFistImg"
-                src="/productimg/<%=datas.productimgf[0] %>"
-                data-zoom="./images/Items/1c.png"
-                alt=""
-                />
-                <div class="detail"></div>
-                <a href="/userWishlist/:id/1">
-                  <div
-                    class="favIcon position-absolute d-flex justify-content-center align-items-center"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 18 18"
-                      fill="none"
-                    >
-                      <path
-                        d="M1.67344 10.5609L8.02617 16.4918C8.28984 16.7379 8.63789 16.875 9 16.875C9.36211 16.875 9.71016 16.7379 9.97383 16.4918L16.3266 10.5609C17.3953 9.56602 18 8.17032 18 6.71133V6.50743C18 4.05001 16.2246 1.95469 13.8023 1.5504C12.1992 1.28321 10.568 1.80704 9.42188 2.95313L9 3.37501L8.57812 2.95313C7.43203 1.80704 5.80078 1.28321 4.19766 1.5504C1.77539 1.95469 0 4.05001 0 6.50743V6.71133C0 8.17032 0.604687 9.56602 1.67344 10.5609Z"
-                        fill="#FF0000"
-                      />
-                    </svg>
-                  </div>
-                </a>
-              </div>
-        
-              <div class="d-flex align-items-center">
-                <div onclick="changeImg('/productimg/<%=datas.productimgf[0]%>')" class="smImg">
-                  <img src="/productimg/<%=datas.productimgf[0]%>" alt=""/>
-                </div>
-
-                <div onclick="changeImg('/productimg/<%=datas.productimgf[1]%>')" class="smImg">
-                  <img src="/productimg/<%=datas.productimgf[1]%>" alt=""/>
-                </div>
-
-                <div onclick="changeImg('/productimg/<%=datas.productimgf[2]%>')" class="smImg">
-                  <img src="/productimg/<%=datas.productimgf[2]%>" alt=""/>
-                </div>
-                <div onclick="changeImg('/productimg/<%=datas.productimgf[3]%>')" class="smImg">
-                  <img src="/productimg/<%=datas.productimgf[3]%>" alt=""/>
-                </div>
-             
-              </div>
+      <div class="fliter-moblie">
+        <div class="fliterOptions">
+          <div class="fliterHead">
+            <h2>Filters</h2>
+          </div>
+          <div class="fliterSubHead">
+            <h2>PRICE</h2>
+            <form action="/userFliter" method="post">
+              <input type="text" value="" hidden />
+              <input type="number" value="1000" name="maxPrice" hidden />
+              <input
+                class="bg-transparent border-0"
+                type="submit"
+                value="Under ₹1,000"
+              />
+            </form>
+            <form action="/userFliterByPrice" method="post">
+              <input type="text" value="" hidden />
+              <input type="number" value="1000" name="minPrice" hidden />
+              <input type="number" value="5000" name="maxPrice" hidden />
+              <input
+                class="bg-transparent border-0"
+                type="submit"
+                value="₹1,000 - ₹5,000"
+              />
+            </form>
+            <form action="/userFliterByPrice" method="post">
+              <input type="text" value="" hidden />
+              <input type="number" value="5000" name="minPrice" hidden />
+              <input type="number" value="10000" name="maxPrice" hidden />
+              <input
+                class="bg-transparent border-0"
+                type="submit"
+                value="₹5,000 - ₹10,000"
+              />
+            </form>
+            <form action="/userFliterByPrice" method="post">
+              <input type="text" value="" hidden />
+              <input type="number" value="10000" name="minPrice" hidden />
+              <input type="number" value="20000" name="maxPrice" hidden />
+              <input
+                class="bg-transparent border-0"
+                type="submit"
+                value="₹10,000 - ₹20,000"
+              />
+            </form>
+            <form action="/userFliterByPrice" method="post">
+              <input type="text" value="" hidden />
+              <input type="number" value="20000" name="minPrice" hidden />
+              <input
+                class="bg-transparent border-0"
+                type="submit"
+                value="Over ₹20,000"
+              />
+            </form>
+            <form action="/userFliterByPrice" method="post">
+              <input type="text" value="" hidden />
+              <input
+                type="number"
+                value=""
+                name="minPrice"
+                placeholder="Min"
+                required
+              />
+              <input
+                type="number"
+                value=""
+                name="minPrice"
+                placeholder="Max"
+                required
+              />
+              <button type="submit">Go</button>
+            </form>
+          </div>
+          <div class="fliterSubHead2">
+            <h2>Customer Ratings</h2>
+            <form class="rateing" action="/userFilterByRateing" method="post">
+              <input
+                class="checkbox"
+                type="checkbox"
+                value="4"
+                name="maxRate"
+                required
+              />
+              <input type="submit" value="4★ & above" />
+            </form>
+            <form class="rateing" action="/userFilterByRateing" method="post">
+              <input
+                class="checkbox"
+                type="checkbox"
+                value="3"
+                name="maxRate"
+                required
+              />
+              <input type="submit" value="3★ & above" />
+            </form>
+          </div>
+          <div class="sort">
+            <div class="fliterHead">
+              <h2>SORT BY</h2>
             </div>
-            <div class="productContent">
-              <h2 class="pName"><%=datas.productname %></h2>
-              <!-- <p class="sTittle">48 Watts Soundbar</p> -->
-              <!-- <h2 class="hDescription">
-                Cinematic Sound In Every Corner Of Your Room
-              </h2> -->
-              <p class="pDescription"><%=datas.description %></p>
-              <p class="colorPallet">COLOR: Red</p>
-              <div class="rating d-flex">
-                <p class="ratedStar">★</p>
-                <p class="ratedStar">★</p>
-                <p class="ratedStar">★</p>
-                <p class="ratedStar">★</p>
-                <p class="unRatedStar">★</p>
+            <div class="sortOptions">
+              <form action="/userFilterByRateing" method="post">
+                <input type="number" value="1" name="sort" hidden />
+                <input type="submit" value="Price -- Low to High" />
+              </form>
+              <form action="/userFilterByRateing" method="post">
+                <input type="number" value="-1" name="sort" hidden />
+                <input type="submit" value="Price -- High to Low" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="fliter">
+          <div class="fliterOptions">
+            <div class="fliterHead">
+              <h2>Filters</h2>
+            </div>
+            <div class="fliterSubHead">
+              <h2>PRICE</h2>
+              <form action="/userFliter" method="post">
+                <input type="text" value="" hidden />
+                <input type="number" value="1000" name="maxPrice" hidden />
+                <input
+                  class="bg-transparent border-0"
+                  type="submit"
+                  value="Under ₹1,000"
+                />
+              </form>
+              <form action="/userFliterByPrice" method="post">
+                <input type="text" value="" hidden />
+                <input type="number" value="1000" name="minPrice" hidden />
+                <input type="number" value="5000" name="maxPrice" hidden />
+                <input
+                  class="bg-transparent border-0"
+                  type="submit"
+                  value="₹1,000 - ₹5,000"
+                />
+              </form>
+              <form action="/userFliterByPrice" method="post">
+                <input type="text" value="" hidden />
+                <input type="number" value="5000" name="minPrice" hidden />
+                <input type="number" value="10000" name="maxPrice" hidden />
+                <input
+                  class="bg-transparent border-0"
+                  type="submit"
+                  value="₹5,000 - ₹10,000"
+                />
+              </form>
+              <form action="/userFliterByPrice" method="post">
+                <input type="text" value="" hidden />
+                <input type="number" value="10000" name="minPrice" hidden />
+                <input type="number" value="20000" name="maxPrice" hidden />
+                <input
+                  class="bg-transparent border-0"
+                  type="submit"
+                  value="₹10,000 - ₹20,000"
+                />
+              </form>
+              <form action="/userFliterByPrice" method="post">
+                <input type="text" value="" hidden />
+                <input type="number" value="20000" name="minPrice" hidden />
+                <input
+                  class="bg-transparent border-0"
+                  type="submit"
+                  value="Over ₹20,000"
+                />
+              </form>
+              <form action="/userFliterByPrice" method="post">
+                <input type="text" value="" hidden />
+                <input
+                  type="number"
+                  value=""
+                  name="minPrice"
+                  placeholder="Min"
+                  required
+                />
+                <input
+                  type="number"
+                  value=""
+                  name="minPrice"
+                  placeholder="Max"
+                  required
+                />
+                <button type="submit">Go</button>
+              </form>
+            </div>
+            <div class="fliterSubHead2">
+              <h2>Customer Ratings</h2>
+              <form class="rateing" action="/userFilterByRateing" method="post">
+                <input
+                  class="checkbox"
+                  type="checkbox"
+                  value="4"
+                  name="maxRate"
+                  required
+                />
+                <input type="submit" value="4★ & above" />
+              </form>
+              <form class="rateing" action="/userFilterByRateing" method="post">
+                <input
+                  class="checkbox"
+                  type="checkbox"
+                  value="3"
+                  name="maxRate"
+                  required
+                />
+                <input type="submit" value="3★ & above" />
+              </form>
+            </div>
+
+            <div class="sort">
+              <div class="fliterHead">
+                <h2>SORT BY</h2>
               </div>
-              <div class="price">
-                <p class="lPrice">₹<%=datas.price %></p>
-                <p class="fPrice">₹<%=datas.Discount %></p>
-              </div>
-              <p class="stock text-success">In Stock</p>
-              <p>Quantity:<%=datas.quantity %></p>
-              <div class="btnBuy">
-                <a href="/userBuyNow/id">
-                  <button class="buyBtn">Buy Now</button>
-                </a>
-                <a href="">
-                  <button class="cartBtn" onclick="addcart(event,'<%=datas.id%>')">add to cart</button>
-                </a>
+              <div class="sortOptions">
+                <form action="/userFilterByRateing" method="post">
+                  <input type="number" value="1" name="sort" hidden />
+                  <input type="submit" value="Price -- Low to High" />
+                </form>
+                <form action="/userFilterByRateing" method="post">
+                  <input type="number" value="-1" name="sort" hidden />
+                  <input type="submit" value="Price -- High to Low" />
+                </form>
               </div>
             </div>
           </div>
         </div>
-    
-      </div>
-  
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="rateReview">
-              <div
-                class="review d-flex align-items-center justify-content-between"
-              >
-                <h2>Ratings & Reviews</h2>
-                <a href="/userProductRate/id">
-                  <button>Rate Product</button>
-                </a>
-              </div>
-              <div class="content">
-                <div class="userReview">
-                  <h2>Great product</h2>
-                  <div class="rating d-flex">
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
+
+        <div class="container-fluid">
+          <div class="row">
+            <%products.forEach((data)=>{ %>
+            <div class="smallWidth col-6 col-md-4">
+              <div class="shopItems" onclick="console.log('jshdkfd');">
+                <div class="mainItem">
+                  <div
+                    class="itemImg itemImgOne d-flex align-items-center position-relative justify-content-center"
+                  >
+                    
+                   <a href="/productdeatile/<%=data.id%>">
+                    <img src="/productimg/<%=data.productimgf[0]%>" alt="" />
+                  </a> 
                   </div>
-                  <p class="reviewDetails">
-                    It's sound quality is perfect as well as very loud and
-                    clear. It's built quality is upto the mark because it's
-                    woofer is made up of wood which is very good and it's bass
-                    and treble is very amazing after all you can listen any song
-                    and watch any movie like cinema hall experience. Overall it
-                    is best for this price.
-                  </p>
-                  <p class="ratedUserName">User 1</p>
-                </div>
-                <div class="userReview">
-                  <h2>Great product</h2>
-                  <div class="rating d-flex">
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
+                  <div class="itemDescription text-center">
+                    <h2><%=data.productname %></h2>
+                    <p><%=data.description %></p>
+                    <div
+                      class="price d-flex align-items-baseline justify-content-center"
+                    >
+                      <p class="p-0 m-0">₹<%=data.price%></p>
+                      <p class="p-0 m-0">₹<%=data.Discount %></p>
+                    </div>
+                    <div>
+                      <a href="">
+                        <button class="buyBtn">BUY NOW</button>
+                      </a>
+                    </div>
                   </div>
-                  <p class="reviewDetails">
-                    It's sound quality is perfect as well as very loud and
-                    clear. It's built quality is upto the mark because it's
-                    woofer is made up of wood which is very good and it's bass
-                    and treble is very amazing after all you can listen any song
-                    and watch any movie like cinema hall experience. Overall it
-                    is best for this price.
-                  </p>
-                  <p class="ratedUserName">User 1</p>
-                </div>
-                <div class="userReview">
-                  <h2>Great product</h2>
-                  <div class="rating d-flex">
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                  </div>
-                  <p class="reviewDetails">
-                    It's sound quality is perfect as well as very loud and
-                    clear. It's built quality is upto the mark because it's
-                    woofer is made up of wood which is very good and it's bass
-                    and treble is very amazing after all you can listen any song
-                    and watch any movie like cinema hall experience. Overall it
-                    is best for this price.
-                  </p>
-                  <p class="ratedUserName">User 1</p>
-                </div>
-                <div class="userReview">
-                  <h2>Great product</h2>
-                  <div class="rating d-flex">
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                  </div>
-                  <p class="reviewDetails">
-                    It's sound quality is perfect as well as very loud and
-                    clear. It's built quality is upto the mark because it's
-                    woofer is made up of wood which is very good and it's bass
-                    and treble is very amazing after all you can listen any song
-                    and watch any movie like cinema hall experience. Overall it
-                    is best for this price.
-                  </p>
-                  <p class="ratedUserName">User 1</p>
                 </div>
               </div>
             </div>
+            <% }) %>
           </div>
         </div>
       </div>
@@ -951,8 +1032,7 @@
     <!-- end of footer -->
 
     <!-- custom js -->
-    <script src="https://cdn.jsdelivr.net/npm/drift-zoom@1.5.0/dist/Drift.min.js"></script>
-    <script src="./js/productDetailPAge.js"></script>
+    <script src="./js/userSingleProductPage.js"></script>
     <!-- end of custom js -->
     <!-- fontawesome -->
     <script
@@ -967,33 +1047,5 @@
       crossorigin="anonymous"
     ></script>
     <!--end of Bootstrap script file -->
-    <script src="/js/productDetailPAge.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
-    <script>
-      async function addcart(event,id){
-              event.preventDefault();
-              event.stopPropagation();
-
-                const response=await fetch(`/addcart?id=${id}`,{method:`GET`})
-                if(!response.ok){
-                    throw new Error(`error is add cart section`+response.statusText)
-                }
-                const result=await response.json();
-                if(result.success==true){
-                    Swal.fire({
-           title: "Added!",
-            text: "Your file has been added.",
-             icon: "success"
-           });
-           
-                }else{
-                    message.innerHTML=result.Error || "unknown error"
-                }
-                               
-            }
-   
-    </script>
   </body>
 </html>

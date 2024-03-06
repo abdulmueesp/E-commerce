@@ -42,5 +42,22 @@ module.exports={
         }catch(error){
            console.log(error);
         }
+    },
+    cartDELETE:async(req,res)=>{
+        try{
+            const userid=req.session.email._id
+              const id=req.query.id
+              console.log(`product id${id}`);
+             await cartdatabase.updateOne(
+                {userId:userid},
+                {$pull:{productId:{id}}}
+             )
+             res
+             .status(200)
+             .json({success:true,message:"product deleted"})
+
+        }catch(error){
+             console.log(`error is deletecart${error}`);  
+        }
+    },
     }
-}

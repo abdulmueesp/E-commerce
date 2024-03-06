@@ -79,3 +79,27 @@ incBtn.forEach((value, index) => {
     });
   });
 });
+
+async function deletecart(event,id){
+       try{
+        event.preventDefault();
+           const response=await fetch(`/deletecart?id=${id}`,{method:`DELETE`})
+           if(!response.ok){
+            throw new Error(`error is delete cart section`+response.statusText)
+        }
+        const result=await response.json()
+        if(result.success==true){
+          Swal.fire({
+        title: "Deleted!",
+      text: "Your file has been deleted.",
+       icon: "success"
+       });
+       document.querySelector('.cartItems').remove()
+      }else{
+          message.innerHTML=result.Error || "unknown error"
+      }
+
+       }catch(error){
+           
+       }
+}
