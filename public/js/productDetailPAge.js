@@ -1,3 +1,5 @@
+const { default: Response } = require("twilio/lib/http/response");
+
 const hamburgerBtn = document.querySelector(".hamburger");
 const mobilenavigationList = document.querySelector(".mobilenavigationList");
 const mobilenavigation = document.querySelector(".mobilenavigation");
@@ -37,3 +39,27 @@ document.querySelector('.mainImg').addEventListener('mouseover', () => {
 document.querySelector('.mainImg').addEventListener('mouseout', () => {
     document.querySelector('.detail').style.display = 'none';
 });
+
+async function addwish(event,productid){
+  try{
+   event.preventDefault();
+
+    const heartbtn=document.querySelector(".ok")
+  
+   const response=await fetch(`/addwishlist?id=${productid}`)
+        
+   const result=await response.json();
+
+      console.log(`result is${result}`);
+   if(result.success==true){
+       heartbtn.style='color:red'
+   }if(result.success==false){
+       heartbtn.style='color:rgb(88, 67, 67)'
+   }
+     
+    
+
+  }catch(error){
+        console.log(`error add fetch sec${error}`);
+  }
+}

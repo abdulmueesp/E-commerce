@@ -7,6 +7,7 @@ const nodemailer=require("nodemailer")
 const signupdatabase=require("../model/signup")
 const bannerdatabase=require("../model/banner")
 const productdatabase=require("../model/product")
+const wishlistdatabase=require("../model/wishlist")
 require("dotenv").config()
 
 // const{body,validationResult}=require("express-validator")
@@ -190,8 +191,17 @@ module.exports={
         },
         productdeaileGET:async(req,res)=>{
           const id=req.params.id
+         const userid=req.session.email._id
+         let existingproduct=false;
           const datas=await productdatabase.findById(id)
-          res.render("productdeatilepage",{datas})
+         const wishdata=await wishlistdatabase.findOne({userId:userid})
+        const existproduct=wishdata.productId.find(productId=>productId.equals(id))
+        if(existproduct!==undefined){
+              existingproduct=true
+        }
+         
+
+          res.render("productdeatilepage",{datas,existingproduct})
         },
        productsHomeGET:async(req,res)=>{
           const products=await productdatabase.find()

@@ -3,6 +3,7 @@ const router=express.Router();
 const{body,validationResult}=require("express-validator")
 // const usercontroller=require("../controller/usercontroller")
 const cartcontroller=require("../controller/cartcontroller")
+const wishlistcontroler=require("../controller/wishlistcontrol")
 
 
 const{
@@ -48,6 +49,10 @@ router.delete("/deletecart",cartcontroller.cartDELETE)
 
 
 router.get("/productshome",productsHomeGET)
+
+router.get("/addwishlist",wishlistcontroler.addwishlistGET)
+router.get("/removewishlist",wishlistcontroler.removewishlistGET)
+
 
 
 

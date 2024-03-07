@@ -16,3 +16,4 @@ const fliterMoblie = document.querySelector('.fliter-moblie');
 filterBtn.addEventListener('click', () => {
     fliterMoblie.classList.toggle('active');
 });
+
