@@ -1,5 +1,6 @@
 const { default: mongoose } = require("mongoose")
 const cartdatabase=require("../model/cart")
+const axios=require("axios")
 
 
 module.exports={
@@ -8,7 +9,18 @@ module.exports={
         const userid=req.session.email._id
        console.log(userid);
         const datas=await cartdatabase.findOne({userId:userid}).populate('productId.id');
-        res.render("userCart",{datas})
+            
+        const subtotal=datas.productId.reduce((acc,index)=>{
+            return(acc += index.id.price * index.quantity)
+        },0)
+
+        let discountTotal=0;
+        discountTotal=datas.productId.reduce((acc,index)=>{
+            return(acc += index.id.Discount * index.quantity);
+        },0);
+
+
+        res.render("userCart",{datas,discountTotal,subtotal})
         }catch(error){
             console.log(`error is a${error}`);
         }
@@ -60,4 +72,26 @@ module.exports={
              console.log(`error is deletecart${error}`);  
         }
     },
+        quantitycon:async(req,res)=>{
+            console.log("hi")
+            try{
+            const userid=req.session.email._id
+            console.log('ggfhf');
+            const userId=new mongoose.Types.ObjectId(userid);
+            const productid=req.body.productid;
+            console.log(`axio${productid}`);
+            const id=new mongoose.Types.ObjectId(productid)
+            const qty=req.body.qty
+
+            const abc=await cartdatabase.updateOne(
+                {userId:userId, "productId.id":id},
+                {$set:{"productId.$.quantity":qty}}
+            );
+            res.status(200).json({success:true,message:"quantity updated"})
+            
+        }catch(error){
+           console.log(`error is quan up${error}`);
+        }
     }
+    }
+    

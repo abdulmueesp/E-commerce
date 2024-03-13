@@ -1,3 +1,5 @@
+// const axios=require("axios")
+
 const hamburgerBtn = document.querySelector(".hamburger");
 const mobilenavigationList = document.querySelector(".mobilenavigationList");
 const mobilenavigation = document.querySelector(".mobilenavigation");
@@ -10,75 +12,7 @@ hamburgerBtn.addEventListener("click", () => {
   logo.classList.toggle("active");
 });
 
-const decBtn = document.querySelectorAll(".dec");
-const incBtn = document.querySelectorAll(".inc");
-const qty = document.querySelectorAll(".qtyOne");
-const lPrice = document.querySelectorAll(".lPrice");
-const fPrice = document.querySelectorAll(".fPrice");
-const sTotal = document.querySelector("#sTotal");
-const dPrice = document.querySelector("#dPrice");
-const tPrice = document.querySelector("#tPrice");
 
-decBtn.forEach((value, index) => {
-  value.addEventListener("click", () => {
-    if (Number(qty[index].innerHTML) !== 1) {
-      qty[index].innerHTML = `${Number(qty[index].innerHTML) - 1}`;
-      const sNum = Number(sTotal.innerHTML.replace(/[₹,]/g, ""));
-      const fNum = Number(fPrice[index].innerHTML.replace(/[₹,]/g, ""));
-      const subNum = sNum - fNum;
-      sTotal.innerHTML = subNum.toLocaleString("en-IN", {
-        style: "currency",
-        currency: "INR",
-      });
-      const lNum = Number(lPrice[index].innerHTML.replace(/[₹,]/g, ""));
-      let dNum = Number(dPrice.innerHTML.replace(/[-,]/g, ""));
-      dNum = dNum - (fNum - lNum);
-      if (dNum === 0) {
-        dPrice.innerHTML = `0`;
-      } else {
-        dNum = dNum.toLocaleString("en-IN", {
-          style: "currency",
-          currency: "INR",
-        });
-        dPrice.innerHTML = `${dNum.replace(/[₹]/g, "-")}`;
-      }
-      let tNum = Number(tPrice.innerHTML.replace(/[₹,]/g, ""));
-      tNum = tNum - lNum;
-      tPrice.innerHTML = tNum.toLocaleString("en-IN", {
-        style: "currency",
-        currency: "INR",
-      });
-    }
-  });
-});
-
-incBtn.forEach((value, index) => {
-  value.addEventListener("click", () => {
-    qty[index].innerHTML = `${Number(qty[index].innerHTML) + 1}`;
-    const sNum = Number(sTotal.innerHTML.replace(/[₹,]/g, ""));
-    const fNum = Number(fPrice[index].innerHTML.replace(/[₹,]/g, ""));
-    const subNum = sNum + fNum;
-    sTotal.innerHTML = subNum.toLocaleString("en-IN", {
-      style: "currency",
-      currency: "INR",
-    });
-    const lNum = Number(lPrice[index].innerHTML.replace(/[₹,]/g, ""));
-    let dNum = Number(dPrice.innerHTML.replace(/[-,]/g, ""));
-    dNum = dNum + (fNum - lNum);
-    dNum = dNum.toLocaleString("en-IN", {
-      style: "currency",
-      currency: "INR",
-    });
-    dPrice.innerHTML = 0;
-    dPrice.innerHTML = `${dNum.replace(/[₹]/g, "-")}`;
-    let tNum = Number(tPrice.innerHTML.replace(/[₹,]/g, ""));
-    tNum = tNum + lNum;
-    tPrice.innerHTML = tNum.toLocaleString("en-IN", {
-      style: "currency",
-      currency: "INR",
-    });
-  });
-});
 
 async function deletecart(event,id){
        try{
@@ -103,3 +37,100 @@ async function deletecart(event,id){
            
        }
 }
+
+const fprice=document.querySelectorAll(".fPrice");
+const sTotal=document.querySelector("#sTotal");
+const dprice=document.querySelector("#dPrice");
+const tprice=document.querySelector("#tPrice");
+
+
+
+
+async function decrement(id,price,stock,discount){
+        
+        const qty=document.querySelector(`.qtyOne${id}`)
+  
+        
+        if(qty.innerHTML > 1){
+          const lprice=document.querySelector(`.lPrice${id}`);
+          const fprice=document.querySelector(`.fPrice${id}`)
+          const initialprice= parseFloat(lprice.innerHTML.replace("₹", ""))
+          qty.innerHTML = +qty.innerHTML -1;
+           const newprice=qty.innerHTML * price;
+           const newdiscount=qty.innerHTML*discount
+          const qtyval= parseInt(qty.innerHTML);
+          const stockval =parseInt(stock)
+          
+          const response=await axios.post("/quantitycon",{
+            productid:id,
+            qty:qtyval
+          });
+            if(qtyval <= stockval){
+              // lprice.classList.remove("red");
+              lprice.innerHTML=`₹${newprice}`;
+            }else{
+              // lprice.classList.add("red");
+              lprice.innerHTML="out of stock";
+            }
+              const total1=total(price * -1);
+              sTotal.innerHTML=`₹${total1}`;
+              tprice.innerHTML=`₹${total1}`
+              
+        }
+
+
+}
+
+
+async function increment(id,price,stock,discount){
+       const qty=document.querySelector(`.qtyOne${id}`)
+
+       const lprice=document.querySelector(`.lPrice${id}`);
+       const fprice=document.querySelector(`.fPrice${id}`)
+       const initialprice= parseFloat(lprice.innerHTML.replace("₹", ""))
+       qty.innerHTML= +qty.innerHTML + 1;
+       const newprice= qty.innerHTML*price;
+       console.log(newprice);
+       const newdiscount=qty.innerHTML*discount;
+       const qtyval= parseInt(qty.innerHTML);
+       const stockval =parseInt(stock)
+
+       const response= await axios.post("/quantitycon",{
+             productid:id,
+             qty:qtyval
+      
+       })
+      //  lprice.innerHTML=`₹${newprice}`;
+      //  console.log(lprice);
+      //  fprice.innerHTML=`₹${newdiscount}`;
+      //  const total1=total(price);
+      //  const totaldis=total(discount);
+      //  fprice.innerHTML=`${totaldis}`;
+      //  sTotal.innerHTML=`${total1}`;
+      //  tprice.innerHTML=`${total1}`;
+
+     if(qtyval <= stockval){
+      lprice.innerHTML=`₹${newprice}`;
+     }else{
+      lprice.innerHTML="out of stock";
+     }
+
+
+
+
+}
+
+function total(price) {
+  const subtoal = sTotal.innerHTML.replace("₹", "");
+  const grantTotal = parseInt(subtoal) + parseInt(price);
+  return grantTotal;
+}
+function total(discount) {
+  const discounttotal = fprice.innerHTML.replace("₹", "");
+  const Total = parseInt(discounttotal) + parseInt(discount);
+  return Total;
+}
+
+
+
+

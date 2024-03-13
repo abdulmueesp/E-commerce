@@ -14,9 +14,7 @@
     />
     <!-- end of Bootstrap css cdn link -->
     <!-- Style css -->
-    
     <link rel="stylesheet" href="/css/userCart.css" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- end of Style css -->
   </head>
   <body>
@@ -220,7 +218,7 @@
           <div class="col-12">
             <div class="cartHead">
               <div class="d-flex align-items-center gap-2">
-                <h2 class="m-0 p-0">Cart(2)</h2>
+                <h2 class="m-0 p-0">wishlist(2)</h2>
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -245,12 +243,12 @@
               <div class="col-6 oneSection">
                 
                 <div class="cartItems">
-                  <% datas.productId.forEach((ok)=>{%>
+                    <% datas.productId.forEach((data)=>{%>
                   <div class="items position-relative">
                     
                     <a
                       class="position-absolute deleteBtn"
-                      href="" onclick="deletecart(event,'<%=ok.id.id%>')"
+                      href="" 
                     >
                       <svg
                         width="13"
@@ -269,36 +267,32 @@
                     <div class="contentDiv d-flex gap-4">
                     
                       <div class="itemImg">
-                        <img src="/productimg/<%=ok.id.productimgf[0]%>" alt="" />
+                        <img src="/productimg/<%=data.productimgf[0]%>" alt="" />
                       </div>
                       <div class="productDetails">
-                        <h2><%=ok.id.productname%></h2>
+                        <h2><%=data.productname%></h2>
                         <div class="quandity d-flex align-items-center">
-                          <div
+                          <!-- <div
                             class="dec d-flex justify-content-center align-items-center"
                           >
-                            <i class="fa-solid fa-minus" onclick="decrement('<%=ok.id._id%>','<%=ok.id.price%>','<%=ok.id.quantity%>','<%=ok.id.Discount%>')"></i>
-                          </div>
-                          <div
+                            <i class="fa-solid fa-minus"></i>
+                          </div> -->
+                          <!-- <div
                             class="qty d-flex justify-content-center align-items-center"
                           >
-                            <p class="m-0 p-0 qtyOne<%=ok.id._id%>"><%=ok.quantity%></p>
-                          </div>
-                          <div
+                            <p class="m-0 p-0 qtyOne"></p>
+                          </div> -->
+                          <!-- <div
                             class="inc d-flex justify-content-center align-items-center"
                           >
-                            <i class="fa-solid fa-plus" onclick="increment('<%=ok.id._id%>','<%=ok.id.price%>','<%=ok.id.quantity%>','<%=ok.id.Discount%>')"></i>
-                          </div>
+                            <i class="fa-solid fa-plus"></i>
+                          </div> -->
                         </div>
                         <p class="color">COLOR</p>
                         <p class="cName">Blue</p>
                         <div class="price d-flex align-items-baseline gap-2">
-
-                          <% let productprice= ok.id.price * ok.quantity %>
-                          <p class="lPrice<%=ok.id._id%>">₹<%=productprice%></p>
-                          <% let productdiscount = ok.id.Discount * ok.quantity %>
-                          <p class="fPrice<%=ok.id._id%>">₹<%=productdiscount%></p>
-
+                          <p class="lPrice">₹<%=data.price %></p>
+                          <p class="fPrice">₹<%=data.Discount %></p>
                           <p>49% OFF</p>
                         </div>
                       </div>
@@ -306,84 +300,13 @@
                     </div>
                    
                   </div>
+                  
                   <%}) %>
                  
-                  <div class="coupons">
-                    <form
-                      action="/userApplyCoupon"
-                      class="d-flex align-items-center"
-                      method="post"
-                    >
-                      <div class="input">
-                        <input type="text" placeholder="Enter Coupon Code" />
-                      </div>
-                      <div>
-                        <button type="submit">APPLY</button>
-                      </div>
-                    </form>
-                  </div>
                 </div>
               </div>
               
-              <div class="col-6 oneSection">
-                <div class="orderSummary">
-                  <div class="orderHeading">
-                    <h2>order summary</h2>
-                  </div>
-                  <div class="orderContent">
-                    <div
-                      class="sTotal d-flex justify-content-between align-items-center"
-                    >
-                      <p class="commonText m-0 p-0">Subtotal</p>
-                      <p class="commonSub m-0 p-0" id="sTotal">₹<%=subtotal%></p>
-                    </div>
-
-                    <div
-                      class="ship d-flex justify-content-between align-items-center"
-                    >
-                      <p class="commonText m-0 p-0">Shipping</p>
-                      <p class="commonSub m-0 p-0" id="free">FREE</p>
-                    </div>
-
-                    <div
-                      class="ship d-flex justify-content-between align-items-center"
-                    >
-                      <p class="commonText m-0 p-0">Discount</p>
-                      <p class="commonSub m-0 p-0" id="dPrice">₹<%=discountTotal%></p>
-                    </div>
-
-                    <div
-                      class="ship d-flex justify-content-between align-items-center"
-                    >
-                      <p class="commonText m-0 p-0">Coupon Discount</p>
-                      <p class="commonSub m-0 p-0" id="cDPrice">0</p>
-                    </div>
-                  </div>
-                  <div
-                    class="commonText tPrice d-flex justify-content-between align-items-center"
-                  >
-                    <p class="m-0 p-0">Total</p>
-                    <p class="m-0 p-0" id="tPrice">₹<%=subtotal%></p>
-                  </div>
-                </div>
-                <!-- <div class="ms-auto orderSummary mb-0">
-                                <div class="orderHeading">
-                                    <h2>Delivery Address</h2>
-                                </div>
-                                <div class="deleviryContent">
-                                    <div class="chooseAdd position-relative">
-                                        <div class="existingAddress">
-                                            <p class="name">John D</p>
-                                            <p>Abc house, abc street,PIN: 673478</p>
-                                            <p class="phone">Phone: 98675555568</p>
-                                        </div>
-                                        <a href="/userChangeAddress">
-                                            <button class="position-absolute button">Change</button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div> -->
-              </div>
+             
             </div>
           </div>
         </div>
@@ -902,8 +825,7 @@
         </div>
     </footer>
     <!-- end of footer -->
- 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <!-- custom js -->
     <script src="/js/userCart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

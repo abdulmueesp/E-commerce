@@ -46,12 +46,12 @@ router.get("/productdeatile/:id",productdeaileGET)
 router.get("/usercart",cartcontroller.usercartGET)
 router.get("/addcart",cartcontroller.addcartGET)
 router.delete("/deletecart",cartcontroller.cartDELETE)
-
+router.post("/quantitycon",cartcontroller.quantitycon)
 
 router.get("/productshome",productsHomeGET)
 
 router.get("/addwishlist",wishlistcontroler.addwishlistGET)
-router.get("/removewishlist",wishlistcontroler.removewishlistGET)
+router.get("/wishlist",wishlistcontroler.wishlistGET)
 
 
 

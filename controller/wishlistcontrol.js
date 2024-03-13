@@ -4,6 +4,14 @@ const { json } = require("body-parser");
 
 
 module.exports={
+    wishlistGET:async(req,res)=>{
+        const id=req.session.email._id
+      const datas= await wishlistdatabase.findOne({userId:id}).populate('productId');
+
+    res.render("wishlist",{datas})
+
+
+    },
     addwishlistGET:async(req,res)=>{
         try{
              const productid=req.query.id
@@ -44,7 +52,5 @@ module.exports={
 
         }
     },
-    removewishlistGET:(req,res)=>{
-        
-    }
+   
 }
