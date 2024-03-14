@@ -120,16 +120,16 @@ async function increment(id,price,stock,discount){
 
 }
 
-function total(price) {
-  const subtoal = sTotal.innerHTML.replace("₹", "");
-  const grantTotal = parseInt(subtoal) + parseInt(price);
-  return grantTotal;
-}
-function total(discount) {
-  const discounttotal = fprice.innerHTML.replace("₹", "");
-  const Total = parseInt(discounttotal) + parseInt(discount);
-  return Total;
-}
+// function total(price) {
+//   const subtoal = sTotal.innerHTML.replace("₹", "");
+//   const grantTotal = parseInt(subtoal) + parseInt(price);
+//   return grantTotal;
+// }
+// function total(discount) {
+//   const discounttotal = fprice.innerHTML.replace("₹", "");
+//   const Total = parseInt(discounttotal) + parseInt(discount);
+//   return Total;
+// }
 
 
 
