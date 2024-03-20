@@ -16,9 +16,9 @@ module.exports={
 
         let discountTotal=0;
         discountTotal=datas.productId.reduce((acc,index)=>{
-            return(acc += index.id.Discount * index.quantity);
+            return(acc += index.id.price * index.quantity);
         },0);
-
+            
 
         res.render("userCart",{datas,discountTotal,subtotal})
         }catch(error){
@@ -87,7 +87,15 @@ module.exports={
                 {userId:userId, "productId.id":id},
                 {$set:{"productId.$.quantity":qty}}
             );
-            res.status(200).json({success:true,message:"quantity updated"})
+
+
+            const datas=await cartdatabase.findOne({userId:userid}).populate('productId.id');
+            const subtotal=datas.productId.reduce((acc,index)=>{
+                return(acc += index.id.price * index.quantity)
+            },0)
+           
+
+            res.status(200).json({success:true,total:subtotal})
             
         }catch(error){
            console.log(`error is quan up${error}`);

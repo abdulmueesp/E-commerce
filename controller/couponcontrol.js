@@ -12,7 +12,7 @@ module.exports={
     },
     addcouponPOST:async(req,res)=>{
         try{
-        const{couponcode,upto,validfrom,validto}=req.body
+        const{couponcode,upto,updown,validfrom,validto,discount}=req.body
 
         const validfromformt=moment(validfrom).format("MM-DD-YYYY");
         const validtoformt=moment(validto).format("MM-DD-YYYY");
@@ -20,6 +20,8 @@ module.exports={
         const newdata=new coupondatabase({
             couponcode:couponcode.toUpperCase(),
             upto,
+            updown,
+            discount,
             validfrom:validfromformt,
             validto:validtoformt
         })

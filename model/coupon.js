@@ -5,9 +5,17 @@ const couponschema=new mongoose.Schema({
         type:String,
         required:true
     },
+    discount:{
+       type:String,
+       required:true
+    },
     upto:{
         type:Number,
         required:true
+    },
+    updown:{
+       type:Number,
+       required:true
     },
     validfrom:{
         type:Date,

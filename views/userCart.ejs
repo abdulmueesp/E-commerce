@@ -126,7 +126,7 @@
               <div class="useroptions d-flex">
                 <ul class="m-0 p-0 d-flex align-items-center list-unstyled">
                   <li>
-                    <a href="/userAccont">
+                    <a href="/userprofile">
                       <svg
                         width="20"
                         height="20"
@@ -173,7 +173,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="/userWhislist">
+                    <a href="/wishlist">
                       <svg
                         width="20"
                         height="20"
@@ -189,7 +189,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="/usersAddToCart">
+                    <a href="/usercart">
                       <svg
                         width="20"
                         height="20"
@@ -296,7 +296,7 @@
 
                           <% let productprice= ok.id.price * ok.quantity %>
                           <p class="lPrice<%=ok.id._id%>">₹<%=productprice%></p>
-                          <% let productdiscount = ok.id.Discount * ok.quantity %>
+                          <% let productdiscount = ok.id.price * ok.quantity %>
                           <p class="fPrice<%=ok.id._id%>">₹<%=productdiscount%></p>
 
                           <p>49% OFF</p>
@@ -349,7 +349,7 @@
                       class="ship d-flex justify-content-between align-items-center"
                     >
                       <p class="commonText m-0 p-0">Discount</p>
-                      <p class="commonSub m-0 p-0" id="dPrice">₹<%=discountTotal%></p>
+                      <p class="commonSub m-0 p-0" id="dPrice">-<%=discountTotal%></p>
                     </div>
 
                     <div
@@ -393,7 +393,7 @@
         <div class="row">
           <div class="col-12">
             <div class="checkOut">
-              <form action="/userCartCheckOut">
+              <form action="/checkout">
                 <button>CHECKOUT</button>
               </form>
             </div>

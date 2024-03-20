@@ -195,7 +195,7 @@ module.exports={
          let existingproduct=false;
           const datas=await productdatabase.findById(id)
          const wishdata=await wishlistdatabase.findOne({userId:userid})
-        const existproduct=wishdata.productId.find(productId=>productId.equals(id))
+        const existproduct=wishdata?.productId.find(productId=>productId.equals(id))
         if(existproduct!==undefined){
               existingproduct=true
         }

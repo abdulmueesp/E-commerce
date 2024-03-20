@@ -65,6 +65,11 @@ async function decrement(id,price,stock,discount){
             productid:id,
             qty:qtyval
           });
+          
+          const totalui=await response.data.total
+          tprice.innerHTML=`₹${totalui}`;
+          sTotal.innerHTML=`₹${totalui}`;
+
             if(qtyval <= stockval){
               // lprice.classList.remove("red");
               lprice.innerHTML=`₹${newprice}`;
@@ -72,9 +77,9 @@ async function decrement(id,price,stock,discount){
               // lprice.classList.add("red");
               lprice.innerHTML="out of stock";
             }
-              const total1=total(price * -1);
-              sTotal.innerHTML=`₹${total1}`;
-              tprice.innerHTML=`₹${total1}`
+              // const total1=total(price * -1);
+              // sTotal.innerHTML=`₹${total1}`;
+              // tprice.innerHTML=`₹${total1}`
               
         }
 
@@ -90,7 +95,6 @@ async function increment(id,price,stock,discount){
        const initialprice= parseFloat(lprice.innerHTML.replace("₹", ""))
        qty.innerHTML= +qty.innerHTML + 1;
        const newprice= qty.innerHTML*price;
-       console.log(newprice);
        const newdiscount=qty.innerHTML*discount;
        const qtyval= parseInt(qty.innerHTML);
        const stockval =parseInt(stock)
@@ -100,13 +104,19 @@ async function increment(id,price,stock,discount){
              qty:qtyval
       
        })
+        const totalui=await response.data.total
+
+
+
       //  lprice.innerHTML=`₹${newprice}`;
       //  console.log(lprice);
-      //  fprice.innerHTML=`₹${newdiscount}`;
+   
       //  const total1=total(price);
       //  const totaldis=total(discount);
       //  fprice.innerHTML=`${totaldis}`;
-      //  sTotal.innerHTML=`${total1}`;
+      tprice.innerHTML=`₹${totalui}`;
+      sTotal.innerHTML=`₹${totalui}`;
+      fprice.innerHTML=`₹${newdiscount}`;
       //  tprice.innerHTML=`${total1}`;
 
      if(qtyval <= stockval){

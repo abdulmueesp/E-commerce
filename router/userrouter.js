@@ -5,6 +5,7 @@ const{body,validationResult}=require("express-validator")
 const cartcontroller=require("../controller/cartcontroller")
 const wishlistcontroler=require("../controller/wishlistcontrol")
 const addresscontroler=require("../controller/addresscontrol")
+const ordercontroler=require("../controller/ordercontrole")
 
 const{
     signupGET,
@@ -59,6 +60,11 @@ router.get("/addaddress",addresscontroler.addadressGET)
 router.post("/addaddress",addresscontroler.addadressPOST)
 
 router.get("/userprofile",addresscontroler.userprofileGET)
+
+// checkout 
+router.get("/checkout",ordercontroler.checkoutGET)
+
+router.post("/applycoupon",ordercontroler.applycouponPOST)
 
 
 module.exports=router;
