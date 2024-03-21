@@ -107,6 +107,23 @@ async function payselect(val){
           const result=response.data
           if(result.COD==true){
             window.location.href='/success'
+          }else{
+            console.log("abdulmueees");
+            const razorpayorder=response.data.razorpayorder
+            console.log(razorpayorder);
+          //   const options={
+          //     key:'rzp_test_t5Vo2gETad7Zur',
+          // amount:razorpayorder.amount,
+          // currency:razorpayorder.currency,
+          // name:'Your Company Name',
+          // description:'Test Payment',
+          // order_id:razorpayorder.id,
+          // handler:async function(response){
+          //   const orderresponse=await axios.post()
+          // }
+          //   }
+             
+
           }
 
 })

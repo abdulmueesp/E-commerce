@@ -3,6 +3,18 @@ const signupdatabase=require("../model/signup")
 const cartdatabase=require("../model/cart")
 const productdatabase=require("../model/product")
 const coupondatabase=require("../model/coupon")
+const Razorpay = require("razorpay")
+require("dotenv").config()
+
+const razorpay_key=process.env.KEY_ID;
+const razor_sec=process.env.key_secret
+
+var instance= new Razorpay({
+   key_id:razorpay_key,
+   key_secret:razor_sec
+})
+
+
 module.exports={
 
      checkoutGET:async(req,res)=>{
@@ -62,16 +74,30 @@ module.exports={
          res.render("success")
      },
 
-     checkoutPOST:(req,res)=>{
+     checkoutPOST:async(req,res)=>{
               const{phoneno,paymentadress,paymentmethod}=req.body
-              
+
             if(paymentmethod=='COD'){
                req.session.paymentmethod=paymentmethod;
                req.session.paymentadress=paymentadress;
 
+               res.status(200).json({success:true,COD:true})
+            }else{
+               req.session.paymentmethod=paymentmethod;
+               req.session.paymentadress=paymentadress;
+              const totalprice= req.session.totalprice  
+              console.log(`hhiiihhhu${totalprice}`);     
+                 
+              const options={
+               amount:totalprice *100,
+               currency:"INR"
+              };
+              const razorpayorder=await instance.orders.create(options)
+               console.log(`razopay33 order${razorpayorder}`);  
+                    res.status(200).json({success:true,razorpayorder})
             }            
 
-            res.status(200).json({success:true,COD:true})
+            
          }
      
 
