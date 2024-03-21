@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login Account</title>
+    <title>Order Successfull</title>
     <!-- <link rel="shortcut icon" href="#" type="image/x-icon" /> -->
     <!-- Bootstrap css cdn link -->
     <link
@@ -14,8 +14,7 @@
     />
     <!-- end of Bootstrap css cdn link -->
     <!-- Style css -->
-    <link rel="stylesheet" href="/css/checkout.css" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/css/orderPlacedSuccessfull.css" />
     <!-- end of Style css -->
   </head>
   <body>
@@ -214,200 +213,36 @@
 
     <!-- main -->
     <main>
-      <!-- Modal -->
       <div
-        class="modal fade"
-        id="changeAddressModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
+        class="page d-flex flex-column justify-content-center align-items-center"
       >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content bg-white eachAdd border-0">
-            <div class="modal-header">
-              <h5
-                class="modal-title"
-                id="exampleModalLabel"
-              >
-                Address
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <%addrdata.address.forEach((data)=>{ %>
-              <div class="chooseAdd existingAddress p-3 w-100 mb-3 position-relative">
-                <p class="name"><%=userdata.fullname %></p>
-                <p><%=data.hno %>,<%=data.pin %>,<%=data.locality %>,<%=data.city %>,<%=data.district %>,<%=data.state %>,<%=data.country%></p>
-                <p class="phone">Phone:<%=userdata.number%></p>
-                <input name="adId" class="position-absolute radio" type="radio" value="<%=data.hno %>,<%=data.pin %>,<%=data.locality %>,<%=data.city %>,<%=data.district %>,<%=data.state %>,<%=data.country%>">
-              </div>
-             
-              <% }) %>
-              <p class="m-0"><a href="/" class="button">Add Address</a></p>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary bg-danger text-white"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <!-- Add additional buttons or actions as needed -->
-            </div>
+        <div>
+          <div>
+            <svg
+              class="checkmark"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 52 52"
+            >
+              <circle
+                class="checkmark__circle"
+                cx="26"
+                cy="26"
+                r="25"
+                fill="none"
+              />
+              <path
+                class="checkmark__check"
+                fill="none"
+                d="M14.1 27.2l7.1 7.2 16.7-16.8"
+              />
+            </svg>
           </div>
         </div>
-      </div>
-      <!-- end of Modal -->
-      <div class="container-fluid main">
-        <div class="row mainContainer">
-          <div class="col-12">
-            <div class="cartBody d-flex">
-              <div class="col-6 oneSection">
-                <div class="cartItems">
-                  <div class="items position-relative mb-3">
-                    <div class="d-flex payOptions align-items-center gap-3">
-                      <input
-                        class="pay"
-                        name="payMethode"
-                        value="OP"
-                        type="radio"
-                        id="creditCard"
-                      />
-                      <h2 class="m-0">Credit Card</h2>
-                    </div>
-                  </div>
-
-                  <div class="items position-relative mb-3">
-                    <div class="d-flex payOptions align-items-center gap-3">
-                      <input
-                        class="pay"
-                        name="payMethode"
-                        value="COD"
-                        type="radio"
-                        id="COD"
-                        onchange="payselect('COD')"/>
-                      <h2 class="m-0">Cash On Delivery (COD)</h2>
-                    </div>
-                  </div>
-
-                  <div class="orderSummary m-0 w-100">
-                    <div class="orderHeading">
-                      <h2>Delivery Address</h2>
-                    </div>
-                    <div class="deleviryContent">
-                      <div class="chooseAdd position-relative">
-                        <div class="existingAddress">
-                          <p class="name"><%=userdata.fullname %></p>
-                          <p id="adreses" class="paymentadress">
-                            <%=addrdata.address[0].hno%>,
-                            <%=addrdata.address[0].pin%>,
-                            <%=addrdata.address[0].locality%>,
-                            <%=addrdata.address[0].city%>,
-                            <%=addrdata.address[0].district%>,
-                            <%=addrdata.address[0].state%>,
-                            <%=addrdata.address[0].country%>
-                          </p>
-                          <p class="phone">Phone:<%=userdata.number %></p>
-                        </div>
-                        <a
-                          href="/userChangeAddress"
-                          data-bs-toggle="modal"
-                          data-bs-target="#changeAddressModal"
-                        >
-                          <button class="position-absolute button">
-                            Change
-                          </button>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 oneSection">
-
-                <div class="coupons">
-                  <form
-                    action="/userApplyCoupon"
-                    class="d-flex align-items-center"
-                    method="post"
-                  >
-                    <div class="input">
-                      <input type="text" placeholder="Enter Coupon Code" class="couponinp" />
-                    </div>
-                    <div>
-                      <button type="submit" onclick="applycoupon(event,'<%=totalprice%>')">APPLY</button>
-                    </div>
-                  </form>
-                  <div class="couponbox"><%=coupondata?.couponcode%></div>
-                </div>
-
-
-                <div class="orderSummary">
-                  <div class="orderHeading">
-                    <h2>order summary</h2>
-                  </div>
-                  <div class="orderContent">
-                    <div
-                      class="sTotal d-flex justify-content-between align-items-center"
-                    >
-                      <p class="commonText m-0 p-0">Subtotal</p>
-                      <p class="commonSub m-0 p-0" id="sTotal">₹<%=totalprice%></p>
-                    </div>
-
-                    <div
-                      class="ship d-flex justify-content-between align-items-center"
-                    >
-                      <p class="commonText m-0 p-0">Shipping</p>
-                      <p class="commonSub m-0 p-0" id="free">FREE</p>
-                    </div>
-
-
-                    <div
-                      class="ship d-flex justify-content-between align-items-center"
-                    >
-                      <p class="commonText m-0 p-0">Coupon Discount</p>
-                      <p class="commonSub m-0 p-0" id="cDPrice">0</p>
-                    </div>
-                  </div>
-                  <div
-                    class="commonText tPrice d-flex justify-content-between align-items-center"
-                  >
-                    <p class="m-0 p-0">Total</p>
-                    <p class="m-0 p-0" id="tPrice">₹<%=totalprice%></p>
-                  </div>
-                </div>
-                <!-- ok  -->
-               
-
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      
-
-
-
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="checkOut">
-              <form action="/checkout">
-                <p class="error" style="color: red; text-align: center;" ></p>
-                <button  class="okbtn">Proceed to payment</button>
-              </form>
-            </div>
-          </div>
-        </div>
+        <h2>Order Placed Successfully</h2>
+        <p>Thank you</p>
+        <a href="/userOrder">
+          <button class="okBtn">Ok</button>
+        </a>
       </div>
     </main>
     <!-- end of main -->
@@ -913,7 +748,7 @@
     <!-- end of footer -->
 
     <!-- custom js -->
-    <script src="/js/checkout.js"></script>
+    <script src="/js/orderPlacedSuccessfull.js"></script>
     <!-- end of custom js -->
     <!-- fontawesome -->
     <script

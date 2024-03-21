@@ -63,8 +63,11 @@ router.get("/userprofile",addresscontroler.userprofileGET)
 
 // checkout 
 router.get("/checkout",ordercontroler.checkoutGET)
+router.post("/checkout",ordercontroler.checkoutPOST)
 
 router.post("/applycoupon",ordercontroler.applycouponPOST)
+
+router.get("/success",ordercontroler.successGET)
 
 
 module.exports=router;

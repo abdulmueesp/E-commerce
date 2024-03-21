@@ -1,3 +1,4 @@
+// const { default: axios } = require("axios");
 
 
 const hamburgerBtn = document.querySelector(".hamburger");
@@ -78,3 +79,34 @@ async function applycoupon(event,totalamount){
       }
 
 }
+
+let payment;
+async function payselect(val){
+     
+        payment=val
+
+}
+   const okbtn=document.querySelector('.okbtn')
+   okbtn.addEventListener('click',async(event)=>{
+
+        event.preventDefault()
+        if(!payment){
+              document.querySelector('.error').innerHTML="please select payment method"
+              setTimeout(()=>{
+                document.querySelector('.error').innerHTML=''
+              },3000)
+        }
+
+       const phoneno=document.querySelector('.phone').innerHTML
+       const paymentaddress=document.querySelector('.paymentadress').innerHTML
+        const response=await axios.post("/checkout",{
+          phoneno:phoneno,
+          paymentadress:paymentaddress,
+          paymentmethod:payment
+        })
+          const result=response.data
+          if(result.COD==true){
+            window.location.href='/success'
+          }
+
+})

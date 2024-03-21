@@ -57,7 +57,22 @@ module.exports={
            res.status(200).json({success:true,amount,discount:coupong.discount})
 
 
-     }
+     },
+     successGET:(req,res)=>{
+         res.render("success")
+     },
 
+     checkoutPOST:(req,res)=>{
+              const{phoneno,paymentadress,paymentmethod}=req.body
+              
+            if(paymentmethod=='COD'){
+               req.session.paymentmethod=paymentmethod;
+               req.session.paymentadress=paymentadress;
 
-}
+            }            
+
+            res.status(200).json({success:true,COD:true})
+         }
+     
+
+   }
