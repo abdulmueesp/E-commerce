@@ -1,4 +1,5 @@
-// const { default: axios } = require("axios");
+
+
 
 
 const hamburgerBtn = document.querySelector(".hamburger");
@@ -80,50 +81,3 @@ async function applycoupon(event,totalamount){
 
 }
 
-let payment;
-async function payselect(val){
-     
-        payment=val
-
-}
-   const okbtn=document.querySelector('.okbtn')
-   okbtn.addEventListener('click',async(event)=>{
-
-        event.preventDefault()
-        if(!payment){
-              document.querySelector('.error').innerHTML="please select payment method"
-              setTimeout(()=>{
-                document.querySelector('.error').innerHTML=''
-              },3000)
-        }
-
-       const phoneno=document.querySelector('.phone').innerHTML
-       const paymentaddress=document.querySelector('.paymentadress').innerHTML
-        const response=await axios.post("/checkout",{
-          phoneno:phoneno,
-          paymentadress:paymentaddress,
-          paymentmethod:payment
-        })
-          const result=response.data
-          if(result.COD==true){
-            window.location.href='/success'
-          }else{
-            console.log("abdulmueees");
-            const razorpayorder=response.data.razorpayorder
-            console.log(razorpayorder);
-          //   const options={
-          //     key:'rzp_test_t5Vo2gETad7Zur',
-          // amount:razorpayorder.amount,
-          // currency:razorpayorder.currency,
-          // name:'Your Company Name',
-          // description:'Test Payment',
-          // order_id:razorpayorder.id,
-          // handler:async function(response){
-          //   const orderresponse=await axios.post()
-          // }
-          //   }
-             
-
-          }
-
-})

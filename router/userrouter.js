@@ -69,5 +69,7 @@ router.post("/applycoupon",ordercontroler.applycouponPOST)
 
 router.get("/success",ordercontroler.successGET)
 
+router.post("/razorpay",ordercontroler.razorpayPOST)
+
 
 module.exports=router;
