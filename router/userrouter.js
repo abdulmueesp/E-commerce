@@ -71,5 +71,7 @@ router.get("/success",ordercontroler.successGET)
 
 router.post("/razorpay",ordercontroler.razorpayPOST)
 
+router.get("/useroders",ordercontroler.userordersGET)
+
 
 module.exports=router;

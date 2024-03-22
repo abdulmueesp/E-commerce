@@ -959,10 +959,10 @@ async function payselect(val){
           name:'Your Company Name',
           description:'Test Payment',
           order_id:razorpayorder.id,
-          handler:function (response){
-            const orderresponse= axios.post("/razorpay")
+          handler: async (response)=>{
+            const orderresponse= await axios.post("/razorpay")
             const orderresult=orderresponse.data
-            
+             console.log(`orderresult${orderresult}`);
              if(orderresult.success==true){
               window.location.href='/success'
              }

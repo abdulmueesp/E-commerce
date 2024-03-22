@@ -38,7 +38,7 @@ module.exports={
                totalprice = cart.productId.reduce((acc,data)=>{
                   return(acc += data.id.price * data.quantity)
                },0)
-
+                   req.session.totalprice=totalprice
                 console.log(`total${totalprice}`);
                
                
@@ -179,7 +179,14 @@ module.exports={
          }catch(error){
             console.log(`ibde${error}`);
          }
+      },
+
+      userordersGET:async(req,res)=>{
+         const userid=req.session.email._id
+       const oderdeatile=await orderdatabase.find({userid:userid}).populate('products.id')
+       console.log(oderdeatile);
+       res.render("useroders",{oderdeatile})
+            
       }
      
-
    }
