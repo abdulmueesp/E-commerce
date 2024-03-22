@@ -6,6 +6,7 @@ const coupondatabase=require("../model/coupon")
 const orderdatabase=require("../model/orders")
 const Razorpay = require("razorpay")
 const product = require("../model/product")
+const { default: mongoose } = require("mongoose")
 require("dotenv").config()
 
 const razorpay_key=process.env.KEY_ID;
@@ -188,18 +189,30 @@ module.exports={
        res.render("useroders",{oderdeatile})
             
       },
-      ordercancelPATCH:async(req,res)=>{
+      ordercancelGET:async(req,res)=>{
          try{
-          const id=req.query.id
-          const userorders=await orderdatabase.findOne({_id:id})
-          console.log(`order cancel find${userorders}`);
+         const id=req.params.oderid
           const updateorder=await orderdatabase.updateOne({_id:id},{$set:{status:'cancelled'}});
-         res.json({success:true});
-
+               res.redirect("/useroders");
          }catch(error){
             console.log(error);
          }
 
+      },
+      ordersummaryGET:async(req,res)=>{
+         try{
+            const userid=req.session.email._id
+            const id = new mongoose.Types.ObjectId(req.query.id)
+            const useroders=await orderdatabase.findOne({_id:id}).populate('products.id')
+            const userdeatiles=await signupdatabase.findOne({_id:userid})
+            
+
+
+            res.render("odersummary",{useroders,userdeatiles})
+         }catch(error){
+            console.log(`ordersummary get${error}`);
+         }
+        
       }
      
    }

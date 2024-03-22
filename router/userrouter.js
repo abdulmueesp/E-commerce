@@ -73,7 +73,9 @@ router.post("/razorpay",ordercontroler.razorpayPOST)
 
 router.get("/useroders",ordercontroler.userordersGET)
 
-router.patch("/ordercancel",ordercontroler.ordercancelPATCH)
+router.get("/ordercancel/:oderid",ordercontroler.ordercancelGET)
+
+router.get("/ordersummary",ordercontroler.ordersummaryGET)
 
 
 module.exports=router;

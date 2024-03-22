@@ -13,6 +13,7 @@ body {
   padding: 0;
   margin: 0;
   overflow-x: hidden;
+  font-family: Ubuntu;
 }
 body::-webkit-scrollbar {
   display: none;
@@ -27,11 +28,7 @@ p {
 a {
   text-decoration: none;
 }
-.odcancbtn{
-  border-radius: 10px;
-  background-color: rgb(194, 14, 14);
-  color: white;
-}
+
 /*---------- BS var ----------*/
 :root {
   --bs-body-bg: transparent;
@@ -252,6 +249,61 @@ a {
   border-radius: 10px;
   box-shadow: none;
 }
+.shopByCat{
+  cursor: pointer;
+}
+#shopByCat ul li a {
+  font-family: Inter;
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: #000;
+  cursor: pointer;
+}
+.displayNone{
+  display: none;
+}
+#shopByCat ul{
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+#shopByCat{
+  width: 100%;
+  height: 35vh;
+  z-index: 2;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  transition: 0.4s ease-in-out;
+}
+#shopByCat ul li {
+  border-bottom: 1pt solid #e0e0e0;
+  padding: 8px 1rem;
+  margin: 0;
+}
+#shopByCat ul li a:focus {
+  color: #0f0;
+}
+#shopByCat ul {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0 2% 0 0;
+}
+#shopByCat ul::-webkit-scrollbar {
+  width: 8px;
+}
+#shopByCat ul::-webkit-scrollbar-thumb {
+  background-color: grey;
+  border-radius: 10px;
+}
+#shopByCat ul::-webkit-scrollbar-track {
+  border-radius: 10px;
+  box-shadow: none;
+}
+.display{
+  display: block;
+}
 /*---------- end of header ----------*/
 
 /*---------- main COntent ----------*/
@@ -375,12 +427,6 @@ a {
   font-weight: 700;
 }
 .price p:nth-child(2) {
-  color: #bdbdbd;
-  font-size: 0.875rem;
-  font-weight: 500;
-  text-decoration-line: line-through;
-}
-.price p:nth-child(3) {
   color: #3cb77c;
   font-size: 0.75rem;
   font-weight: 500;
@@ -651,6 +697,65 @@ a {
 }
 .marginRes{
   margin-right: 3rem;
+}
+.ODhead{
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+.Last{
+  border-bottom: 1px solid #e0e0e0;
+}
+.ODhead p{
+  font-family: Ubuntu;
+  font-weight: 400;
+  font-size: small;
+  color: rgba(0, 0, 0, 0.65);
+}
+.ODhead h2{
+  font-size: medium;
+}
+.ODhead:last-child{
+  border-bottom: none;
+}
+.sDetails{
+  border-top: 0.3rem solid #e0e0e07c;
+}
+.SDetails p{
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+.imgOrder img{
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+}
+.dot{
+  background: #e0e0e0;
+  border-radius: 100%;
+  width: 11px;
+  height: 11px;
+}
+.done{
+  background: #26a541;
+}
+#oText{
+  color: #000;
+}
+.line{
+  width: 3px;
+  height: 3.5rem;
+  transform: translateX(125%);
+  background: #e0e0e0;
+}
+.doneLine{
+  background: #26a541;
+}
+.notDoneLine{
+  background-color: rgba(243, 44, 13, 0.933);
+}
+.notDone{
+  background-color: rgba(243, 44, 13, 0.933);
 }
 /*---------- end of main COntent ----------*/
 
