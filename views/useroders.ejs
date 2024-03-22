@@ -255,8 +255,12 @@
                         <div class="statusCircle"></div>
                         <p class="statusOrder me-3">Ordered</p>
                       </div>
-                      <a href="/userOrderCancled">
-                        <button class="cancelBtn margin">Cancel</button>
+                      <a class="cancel_ancher" href="/userOrderCancled">
+                        <% if(data.status == 'cancelled') { %>
+                        <button class="cancelBtn cancelled<%=data._id%> cancellProduct"  disabled>Cancelled</button>
+                        <% } else { %>
+                        <button class="cancelBtn margin<%=data._id%>" onclick="OrderCancell(event,'<%=data._id%>')">Cancel</button>
+                        <% } %>
                       </a>
                     </div>
                   </div>
@@ -772,7 +776,38 @@
     <!-- end of footer -->
 
     <!-- custom js -->
-    <!-- <script src="/js/userOrderPage.js"></script> -->
+    <script src="/js/userOrderPage.js"></script>
+    <script>
+      async function  OrderCancell(event,OrderId){
+     event.preventDefault()
+     try {
+      const cancelBtn = document.querySelector('.margin'+OrderId)
+      const  response = await fetch(`/ordercancel?id=${OrderId}`,{
+       
+        method:'PATCH',
+        headers:{
+
+          'content-type':'application/json'
+        }
+
+      })
+       
+      const result = await response.json()
+      if(result.success){
+        document.querySelector('.margin' + OrderId).classList.add('cancellProduct')
+      }      
+     } catch (error) {
+
+      console.log(error);
+      
+     }
+       
+
+
+
+    }
+
+    </script>
     <!-- end of custom js -->
     <!-- fontawesome -->
     <script

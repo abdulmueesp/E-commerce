@@ -184,9 +184,22 @@ module.exports={
       userordersGET:async(req,res)=>{
          const userid=req.session.email._id
        const oderdeatile=await orderdatabase.find({userid:userid}).populate('products.id')
-       console.log(oderdeatile);
+      
        res.render("useroders",{oderdeatile})
             
+      },
+      ordercancelPATCH:async(req,res)=>{
+         try{
+          const id=req.query.id
+          const userorders=await orderdatabase.findOne({_id:id})
+          console.log(`order cancel find${userorders}`);
+          const updateorder=await orderdatabase.updateOne({_id:id},{$set:{status:'cancelled'}});
+         res.json({success:true});
+
+         }catch(error){
+            console.log(error);
+         }
+
       }
      
    }

@@ -27,6 +27,10 @@ p {
 a {
   text-decoration: none;
 }
+.btncancel{
+  background-color: red;
+  color: white;
+}
 
 /*---------- BS var ----------*/
 :root {
