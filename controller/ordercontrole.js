@@ -6,6 +6,7 @@ const coupondatabase=require("../model/coupon")
 const orderdatabase=require("../model/orders")
 const Razorpay = require("razorpay")
 const product = require("../model/product")
+const reviewdatabase=require("../model/review")
 const { default: mongoose } = require("mongoose")
 require("dotenv").config()
 
@@ -213,6 +214,44 @@ module.exports={
             console.log(`ordersummary get${error}`);
          }
         
+      },
+      productreviewGET:async(req,res)=>{
+         if(req.session.email){
+         const id=req.query.id
+        
+         const propductdata=await orderdatabase.findOne({_id:id})
+         console.log(`review satart`);
+         res.render("productreview",{propductdata})
+         }else{
+            res.redirect("/login")
+         }
+      },
+      productreviewPOST:async(req,res)=>{
+         try{
+            const userid=req.session.email._id
+         const id=req.query.id
+         const{description}=req.body
+         console.log(`reviewpost${id}`);
+          const review=await reviewdatabase.findOne({productID:id})
+          if(!review){
+            const newreview=new reviewdatabase({
+               productID:id,
+               review:[{userid:userid,comment:description}]
+            })
+            await newreview.save();
+            res.redirect("/useroders")
+          }else{
+               await reviewdatabase.updateOne(
+                  {productID:id},
+                  {$push:{review:{userid:userid,comment:description}}}
+               )
+            res.redirect("/useroders")
+          }
+
+
+         }catch(error){
+
+         }
       }
      
    }

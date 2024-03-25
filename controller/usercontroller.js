@@ -182,10 +182,15 @@ module.exports={
           }
      },
         userhomeGET:async(req,res)=>{
-          const productdata=await productdatabase.find().limit(3)
-          const bandata=await bannerdatabase.find()
-          
-          res.render("userHomePage",{bandata,productdata})
+          if(req.session.email){
+            const productdata=await productdatabase.find().limit(3)
+            const bandata=await bannerdatabase.find()
+            
+            res.render("userHomePage",{bandata,productdata})
+          }else{
+            res.redirect("/login")
+          }
+         
          
 
         },

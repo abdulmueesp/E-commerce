@@ -6,6 +6,7 @@ const axios=require("axios")
 module.exports={
     usercartGET:async(req,res)=>{
         try{
+            if(req.session.email){
         const userid=req.session.email._id
        console.log(userid);
         const datas=await cartdatabase.findOne({userId:userid}).populate('productId.id');
@@ -21,9 +22,14 @@ module.exports={
             
 
         res.render("userCart",{datas,discountTotal,subtotal})
-        }catch(error){
-            console.log(`error is a${error}`);
         }
+        else{
+            res.redirect("/login")
+        }
+    }catch(error){
+        console.log(`error is a${error}`);
+    }
+   
     },
     addcartGET:async(req,res)=>{
         try{

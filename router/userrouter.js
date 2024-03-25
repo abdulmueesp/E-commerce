@@ -77,5 +77,8 @@ router.get("/ordercancel/:oderid",ordercontroler.ordercancelGET)
 
 router.get("/ordersummary",ordercontroler.ordersummaryGET)
 
+router.get("/prodreview",ordercontroler.productreviewGET)
+router.post("/prodreview",ordercontroler.productreviewPOST)
+
 
 module.exports=router;
