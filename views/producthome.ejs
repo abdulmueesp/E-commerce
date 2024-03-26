@@ -79,7 +79,7 @@
                     <a href="/"> Home </a>
                   </li>
                   <li>
-                    <a href="/earbuds"> Earbuds </a>
+                    <a href="/categotyf/watch">Watchesmuees</a>
                   </li>
                   <li>
                     <a href="/earphones"> Earphones </a>
@@ -494,6 +494,7 @@
 
         <div class="container-fluid">
           <div class="row">
+            <% if (products) { %>
             <%products.forEach((data)=>{ %>
             <div class="smallWidth col-6 col-md-4">
               <div class="shopItems" >
@@ -539,6 +540,7 @@
               </div>
             </div>
             <% }) %>
+            <% } %>
           </div>
         </div>
       </div>

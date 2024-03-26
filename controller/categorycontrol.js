@@ -1,4 +1,5 @@
 const categorydata=require("../model/category")
+const productdatabase=require("../model/product")
 
 module.exports={
     categoryGET:async(req,res)=>{
@@ -49,6 +50,17 @@ module.exports={
       }catch(error){
         console.log("error in removing category",error);
         res.status(500).json({success:false,message:"something wrong"})
+      }
+    },
+    categoryfilterGET:async(req,res)=>{
+      try{
+       const category=req.params.category
+       const categorydt=await productdatabase.find({category:category})
+       res.render("producthome",{products:categorydt})
+          
+
+      }catch(error){
+        console.log(`categoryfilter${error}`);
       }
     }
 

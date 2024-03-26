@@ -209,7 +209,14 @@ module.exports={
           res.render("productdeatilepage",{datas,existingproduct})
         },
        productsHomeGET:async(req,res)=>{
+            try{
+              
           const products=await productdatabase.find()
            res.render("producthome",{products})
+
+
+            }catch(error){
+              console.log(`error is productshome${error}`);
+            }
        }
 }
