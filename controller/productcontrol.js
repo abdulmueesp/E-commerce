@@ -64,5 +64,18 @@ module.exports={
             console.log("error in delete product",error);
             res.status(500).json({success:false,message:"something wrong"})
           }
+    },
+    filterpriceGET:async(req,res)=>{
+     const min= req.query.minPrice
+     const max= req.query.maxPrice
+
+     console.log(`min is${min}`);
+     console.log(`max is${max}`);
+     const products= await productdatabase.find({
+
+          price:{$gte:min,$lte:max}
+     })
+     res.render("producthome",{products})
+
     }
 }

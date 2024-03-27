@@ -7,6 +7,7 @@ const wishlistcontroler=require("../controller/wishlistcontrol")
 const addresscontroler=require("../controller/addresscontrol")
 const ordercontroler=require("../controller/ordercontrole")
 const categorycontroler=require("../controller/categorycontrol")
+const productcontrole=require("../controller/productcontrol")
 
 const{
     signupGET,
@@ -83,5 +84,6 @@ router.post("/prodreview",ordercontroler.productreviewPOST)
 
 router.get("/categotyf/:category",categorycontroler.categoryfilterGET)
 
+router.get("/filterprice",productcontrole.filterpriceGET)
 
 module.exports=router;
