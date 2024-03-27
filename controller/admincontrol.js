@@ -1,5 +1,6 @@
 const express=require("express")
 const signupdatabase=require("../model/signup")
+const productsdatabase=require("../model/product")
 
 
 module.exports={
@@ -15,8 +16,10 @@ module.exports={
             console.log("password not connected");
         }
     },
-    adminHomeGET:(req,res)=>{
-        res.render("adminHome")
+    adminHomeGET:async(req,res)=>{
+        const products=await productsdatabase.find()
+   
+        res.render("adminHome",{products})
     },
     userslistGET:async(req,res)=>{
        const signup=await signupdatabase.find({})

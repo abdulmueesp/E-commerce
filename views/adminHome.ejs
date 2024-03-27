@@ -1,140 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="/css/dashboard.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <script src="https://code.jquery.com/jquery-3.7.1.slim.js"></script>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <section id="menu">
-        <div class="logo">
-            <img src="/images/Screenshot__27_-removebg-preview.png" alt="">
-            <h2>Dynamic</h2>
-        </div>
-        <div class="items">
-            <li><i class="fa-solid fa-chart-pie"></i> <a href="/adminHome">Dashboard</a></li>
-            <li><i class="fa-solid fa-table-cells-large"></i> <a href="/userslist">Users</a></li>
-            <li> <i class="fa-regular fa-pen-to-square"></i> <a href="/adminproducts">products</a></li>
-            <li><i class="fa-solid fa-credit-card"></i> <a href="/category">Category</a></li>
-            <li><i class="fa-solid fa-burger"></i> <a href="/banner">Banner</a></li>
-            <li><i class="fa-solid fa-chart-line"></i> <a href="/coupon">coupon</a></li>
-
-        </div>
-
+      <div class="logo">
+        <img src="/images/Screenshot__27_-removebg-preview.png" alt="" />
+        <h2>Dynamic</h2>
+      </div>
+      <div class="items">
+        <li>
+          <i class="fa-solid fa-chart-pie"></i>
+          <a href="/adminHome">Dashboard</a>
+        </li>
+        <li>
+          <i class="fa-solid fa-table-cells-large"></i>
+          <a href="/userslist">Users</a>
+        </li>
+        <li>
+          <i class="fa-regular fa-pen-to-square"></i>
+          <a href="/adminproducts">products</a>
+        </li>
+        <li>
+          <i class="fa-solid fa-credit-card"></i>
+          <a href="/category">Category</a>
+        </li>
+        <li><i class="fa-solid fa-burger"></i> <a href="/banner">Banner</a></li>
+        <li>
+          <i class="fa-solid fa-chart-line"></i> <a href="/coupon">coupon</a>
+        </li>
+      </div>
     </section>
-
 
     <section id="interface">
-        <div class="navigation">
-            <div class="n1">
-                <div>
-                    <i id="menu-btn" class="fa-solid fa-bars"></i>
-                </div>
-                <div class="search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Search">
-                </div>
-            </div>
-
-            <div class="profile">
-                <i class="fa-solid fa-bell"></i>
-                <img src="/images/149071.png" alt="">
-            </div>
+      <div class="navigation">
+        <div class="n1">
+          <div>
+            <i id="menu-btn" class="fa-solid fa-bars"></i>
+          </div>
+          <div class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search" />
+          </div>
         </div>
 
-        <h3 class="i-name">Dashboard</h3>
-        <div class="values">
-            <div class="val-box">
-                <i class="fa-solid fa-users"></i>
-                <div>
-                    <h3>8,267</h3>
-                    <span>New Users</span>
-                </div>
-            </div>
+        <div class="profile">
+          <i class="fa-solid fa-bell"></i>
+          <img src="/images/149071.png" alt="" />
+        </div>
+      </div>
 
-
-
-            <div class="val-box">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <div>
-                    <h3>200,521</h3>
-                    <span>Total Orders</span>
-                </div>
-            </div>
-
-
-
-            <div class="val-box">
-                <i class="fa-regular fa-circle-check"></i>
-                <div>
-                    <h3>215,542</h3>
-                    <span>Products Sold</span>
-                </div>
-            </div>
-
-
-            
-            <div class="val-box">
-                <i class="fa-solid fa-dollar-sign"></i>
-                <div>
-                    <h3>$677.89</h3>
-                    <span>This Month</span>
-                </div>
-            </div>
+      <h3 class="i-name">Dashboard</h3>
+      <div class="values">
+        <div class="val-box">
+          <i class="fa-solid fa-users"></i>
+          <div>
+            <h3>8,267</h3>
+            <span>New Users</span>
+          </div>
         </div>
 
-
-        <div class="board">
-            <table width="100%"> 
-                <thead>
-                    <tr>
-                        <td>Name</td>
-                        <td>Title</td>
-                        <td>Status</td>
-                        <td>Role</td>
-                        <td></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="people"> 
-                            <img src="/images/ramees.jpeg" alt="">
-                            <div class="people-de">
-                                <h5>muees</h5>
-                                <p>ok</p>
-                            </div>
-                        </td>
-
-                        <td class="people-des">
-                          <h5>Software Engineer</h5>
-                          <p>web</p>
-                        </td>
-
-                        <td class="active"><p>Active</p></td>
-
-                        <td class="role"> <p>Owner</p></td>
-
-                        <td class="edit"> <a href="#">Edit</a></td>
-                    </tr>
-
-
-        
-                </tbody>
-            </table>
+        <div class="val-box">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <div>
+            <h3>200,521</h3>
+            <span>Total Orders</span>
+          </div>
         </div>
+
+        <div class="val-box">
+          <i class="fa-regular fa-circle-check"></i>
+          <div>
+            <h3>215,542</h3>
+            <span>Products Sold</span>
+          </div>
+        </div>
+
+        <div class="val-box">
+          <i class="fa-solid fa-dollar-sign"></i>
+          <div>
+            <h3>$677.89</h3>
+            <span>This Month</span>
+          </div>
+        </div>
+      </div>
+
+      <div >
+        <div style="background-color: transparent; height:325px; width:600px">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+      <p
+        style="display: none"
+        class="products"
+        productArray="<%= JSON.stringify(products) %>"
+      ></p>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx = document.getElementById("myChart");
+        const products = document.querySelector(".products");
+        const values = JSON.parse(products.getAttribute("productArray"));
+
+        const categoryCounts = {};
+        values.forEach((element) => {
+          if (categoryCounts[element.category]) {
+            categoryCounts[element.category]++;
+          } else {
+            categoryCounts[element.category] = 1;
+          }
+        });
+        const categories = Object.keys(categoryCounts);
+        const counts = Object.values(categoryCounts);
+
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: categories,
+            datasets: [
+              {
+                label: "Categories & counts",
+                data: counts,
+                borderWidth: 1,
+                borderColor: "black",
+                backgroundColor: "#7b74ec",
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          },
+        });
+      </script>
     </section>
-
     <script>
-        $('#menu-btn').click(function() {
-           $('#menu').toggleClass('active')
-        })
+      $("#menu-btn").click(function () {
+        $("#menu").toggleClass("active");
+      });
     </script>
-</body>
-
+  </body>
 </html>
