@@ -69,8 +69,6 @@ module.exports={
      const min= req.query.minPrice
      const max= req.query.maxPrice
 
-     console.log(`min is${min}`);
-     console.log(`max is${max}`);
      const products= await productdatabase.find({
 
           price:{$gte:min,$lte:max}
@@ -82,7 +80,7 @@ module.exports={
       try{
 
         const sorts=JSON.parse(req.query.sort)
-        console.log(sorts);
+       
         const products=await productdatabase.find().sort({price:sorts})
 
         res.render("producthome",{products})

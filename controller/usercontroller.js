@@ -210,8 +210,12 @@ module.exports={
         },
        productsHomeGET:async(req,res)=>{
             try{
-              
-          const products=await productdatabase.find()
+              let products;
+              const search=req.query.search?.toString() || ''
+             
+           products=await productdatabase.find(
+            {productname:{$regex:search,$options:"i"},}
+           )
            res.render("producthome",{products})
 
 

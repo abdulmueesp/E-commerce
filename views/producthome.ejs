@@ -240,9 +240,11 @@
                 type="text"
                 name="search"
                 placeholder="Search for Products"
+                id="searchproducts"
               />
               <button
                 class="searchBtn d-flex justify-content-center align-items-center"
+                onclick="searchproducts()"
               >
                 <svg
                   width="20"
@@ -363,11 +365,11 @@
               <h2>SORT BY</h2>
             </div>
             <div class="sortOptions">
-              <form action="/highlowfilter" method="get">
+              <form action="/highlowfilter?sort=1" method="get">
                 <input type="number" value="1" name="sort" hidden />
                 <input type="submit" value="Price -- Low to High" />
               </form>
-              <form action="/highlowfilter?sort=" method="get">
+              <form action="/highlowfilter?sort=-1" method="get">
                 <input type="number" value="-1" name="sort" hidden />
                 <input type="submit" value="Price -- High to Low" />
               </form>
@@ -1066,6 +1068,22 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script>
+      async function searchproducts(){
+        try{
+           const search=document.getElementById('searchproducts')
+           const bar=search.value.trim()
+
+           if(bar){
+             window.location.href=`/productshome?search=${bar}`
+           }
+
+
+        }catch(error){
+          console.log(`error is search js`);
+        }
+      }
+    </script>
     <!--end of Bootstrap script file -->
   </body>
 </html>
