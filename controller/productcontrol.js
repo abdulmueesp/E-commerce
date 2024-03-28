@@ -77,5 +77,20 @@ module.exports={
      })
      res.render("producthome",{products})
 
+    },
+    highlowsortGET:async(req,res)=>{
+      try{
+
+        const sorts=JSON.parse(req.query.sort)
+        console.log(sorts);
+        const products=await productdatabase.find().sort({price:sorts})
+
+        res.render("producthome",{products})
+      
+
+
+      }catch(error){
+        console.log(`error is highlow`);
+      }
     }
 }

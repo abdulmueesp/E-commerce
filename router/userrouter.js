@@ -85,5 +85,6 @@ router.post("/prodreview",ordercontroler.productreviewPOST)
 router.get("/categotyf/:category",categorycontroler.categoryfilterGET)
 
 router.get("/filterprice",productcontrole.filterpriceGET)
+router.get("/highlowfilter",productcontrole.highlowsortGET)
 
 module.exports=router;
