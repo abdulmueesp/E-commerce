@@ -1,5 +1,6 @@
 const { default: mongoose } = require("mongoose");
 const addressdatabase=require("../model/address")
+const signupdatabase=require("../model/signup")
 module.exports={
     addadressGET:(req,res)=>{
         res.render("addaddress");
@@ -28,7 +29,14 @@ module.exports={
             console.log(`error is add${error}`);
            }
     },
-    userprofileGET:(req,res)=>{
-        res.render("userprofile")
-    }
+    userprofileGET:async(req,res)=>{
+        if(req.session.email){
+       const id= req.session.email._id
+        const userdata=await signupdatabase.findOne({_id:id})
+        res.render("userprofile",{userdata})
+        }else{
+            res.redirect("/login")
+        }
+    },
+    
 }
