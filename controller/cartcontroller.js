@@ -9,19 +9,26 @@ module.exports={
             if(req.session.email){
         const userid=req.session.email._id
        console.log(userid);
-        const datas=await cartdatabase.findOne({userId:userid}).populate('productId.id');
-            
-        const subtotal=datas.productId.reduce((acc,index)=>{
-            return(acc += index.id.price * index.quantity)
-        },0)
+        let datas=await cartdatabase.findOne({userId:userid})
+       
+        
+                let discountTotal,subtotal;
+        if(datas) {
+        
+       datas= await cartdatabase.findOne({userId:userid}).populate('productId.id');
 
-        let discountTotal=0;
+        subtotal=datas.productId.reduce((acc,index)=>{
+        return(acc += index.id.price * index.quantity)
+         
+        },0)
         discountTotal=datas.productId.reduce((acc,index)=>{
             return(acc += index.id.price * index.quantity);
         },0);
             
-
-        res.render("userCart",{datas,discountTotal,subtotal})
+          
+        
+    }
+    res.render("userCart",{datas:datas?datas:"",discountTotal:discountTotal?discountTotal:"",subtotal:subtotal?subtotal:""})
         }
         else{
             res.redirect("/login")

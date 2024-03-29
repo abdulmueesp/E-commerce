@@ -242,13 +242,13 @@
               <%addrdata.address.forEach((data)=>{ %>
               <div class="chooseAdd existingAddress p-3 w-100 mb-3 position-relative">
                 <p class="name"><%=userdata.fullname %></p>
-                <p><%=data.hno %>,<%=data.pin %>,<%=data.locality %>,<%=data.city %>,<%=data.district %>,<%=data.state %>,<%=data.country%></p>
+                <p><%=data.housename %>,<%=data.pin %>,<%=data.locality %>,<%=data.city %>,<%=data.district %>,<%=data.state %>,<%=data.country%></p>
                 <p class="phone">Phone:<%=userdata.number%></p>
-                <input name="adId" class="position-absolute radio" type="radio" value="<%=data.hno %>,<%=data.pin %>,<%=data.locality %>,<%=data.city %>,<%=data.district %>,<%=data.state %>,<%=data.country%>">
+                <input name="adId" class="position-absolute radio" type="radio" value="<%=data.housename %>,<%=data.pin %>,<%=data.locality %>,<%=data.city %>,<%=data.district %>,<%=data.state %>,<%=data.country%>">
               </div>
              
               <% }) %>
-              <p class="m-0"><a href="/" class="button">Add Address</a></p>
+              <p class="m-0"><a href="/addaddress" class="button">Add Address</a></p>
             </div>
             <div class="modal-footer">
               <button
@@ -306,7 +306,7 @@
                         <div class="existingAddress">
                           <p class="name"><%=userdata.fullname %></p>
                           <p id="adreses" class="paymentadress">
-                            <%=addrdata.address[0].hno%>,
+                            <%=addrdata.address[0].housename%>,
                             <%=addrdata.address[0].pin%>,
                             <%=addrdata.address[0].locality%>,
                             <%=addrdata.address[0].city%>,

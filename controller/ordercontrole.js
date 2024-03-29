@@ -121,7 +121,8 @@ module.exports={
               
 
 
-            }else{
+            }
+            if(paymentmethod=='credit'){
                req.session.paymentmethod=paymentmethod;
                req.session.paymentadress=paymentadress;
               const totalprice= req.session.totalprice  
@@ -157,8 +158,10 @@ module.exports={
                   }
                ]
                carts=products
+               carts=cartsdt.productId
              }else{
                  carts=cartsdt.productId
+                 
              }
              const oders=new orderdatabase({
                userid:userid,
@@ -170,9 +173,16 @@ module.exports={
              })
              await oders.save()
 
-             if(!req.session.pyproductid){
-               await cartdatabase.deleteOne({userid:userid})
-             }
+             if (!req.session.pyproductid) {
+               try {
+                   await cartdatabase.deleteOne({ userid: userid });
+                   console.log('Cart deleted successfully.');
+               } catch (error) {
+                   console.error('Error deleting cart:', error);
+               }
+           }
+
+
              delete req.session.pyproductid
              delete req.session.paymentmethod
              delete req.session.paymentadress

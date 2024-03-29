@@ -220,7 +220,7 @@
           <div class="col-12">
             <div class="cartHead">
               <div class="d-flex align-items-center gap-2">
-                <h2 class="m-0 p-0">Cart(2)</h2>
+                <h2 class="m-0 p-0" id="cartbb">Cart(0)</h2>
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -240,12 +240,20 @@
                 </svg>
               </div>
             </div>
-           
+            <% if( datas.productId!=null){%>
+              <% console.log(datas.productId.length) %>
+              <% if( datas.productId.length>0){%>
+                <script>
+                  const cartcount=document.getElementById('cartbb')
+                  cartcount.innerHTML="Cart"+"("+<%=datas.productId.length %>+")"
+                </script>
+       
             <div class="cartBody d-flex">
               <div class="col-6 oneSection">
                 
                 <div class="cartItems">
                   <% datas.productId.forEach((ok)=>{%>
+           
                   <div class="items position-relative">
                     
                     <a
@@ -269,10 +277,10 @@
                     <div class="contentDiv d-flex gap-4">
                     
                       <div class="itemImg">
-                        <img src="/productimg/<%=ok.id.productimgf[0]%>" alt="" />
+                        <img src="/productimg/<%=ok.id.productimgf[0]?ok.id.productimgf[0]:""%>" alt="" />
                       </div>
                       <div class="productDetails">
-                        <h2><%=ok.id.productname%></h2>
+                        <h2><%=ok.id.productname?ok.id.productname:""%></h2>
                         <div class="quandity d-flex align-items-center">
                           <div
                             class="dec d-flex justify-content-center align-items-center"
@@ -282,7 +290,7 @@
                           <div
                             class="qty d-flex justify-content-center align-items-center"
                           >
-                            <p class="m-0 p-0 qtyOne<%=ok.id._id%>"><%=ok.quantity%></p>
+                            <p class="m-0 p-0 qtyOne<%=ok.id._id%>"><%=ok.quantity?ok.quantity:""%></p>
                           </div>
                           <div
                             class="inc d-flex justify-content-center align-items-center"
@@ -295,9 +303,9 @@
                         <div class="price d-flex align-items-baseline gap-2">
 
                           <% let productprice= ok.id.price * ok.quantity %>
-                          <p class="lPrice<%=ok.id._id%>">₹<%=productprice%></p>
+                          <p class="lPrice<%=ok.id._id%>">₹<%=productprice?productprice:""%></p>
                           <% let productdiscount = ok.id.price * ok.quantity %>
-                          <p class="fPrice<%=ok.id._id%>">₹<%=productdiscount%></p>
+                          <p class="fPrice<%=ok.id._id%>">₹<%=productdiscount?productdiscount:""%></p>
 
                           <p>49% OFF</p>
                         </div>
@@ -307,6 +315,7 @@
                    
                   </div>
                   <%}) %>
+
                  
                   <div class="coupons">
                     <form
@@ -366,6 +375,7 @@
                     <p class="m-0 p-0" id="tPrice">₹<%=subtotal%></p>
                   </div>
                 </div>
+              
                 <!-- <div class="ms-auto orderSummary mb-0">
                                 <div class="orderHeading">
                                     <h2>Delivery Address</h2>
@@ -385,21 +395,32 @@
                             </div> -->
               </div>
             </div>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-12">
+                  <div class="checkOut">
+                    <form action="/checkout">
+                      <button>CHECKOUT</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+             
+            <% }else{ %> 
+              <h1 style="color:red;text-align: center;">your cart is empty</h1>
+               <img style="width:50%;" src="/images/cartImg/e763f7a49068517dd5fc3b6dc5006df8.jpg" alt="">
+
+             <% } %>
+             <% }else{ %>
+              <h1>your cart is empty</h1>
+              <img style="width:50%;" src="/images/cartImg/e763f7a49068517dd5fc3b6dc5006df8.jpg" alt="">
+               <% } %>
           </div>
         </div>
       </div>
 
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="checkOut">
-              <form action="/checkout">
-                <button>CHECKOUT</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+     
     </main>
     <!-- end of main -->
 

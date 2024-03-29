@@ -28,7 +28,7 @@ address:[{
         type:String,
         required:true
     },
-    hno:{
+    housename:{
          type:String,
          required:true
     },

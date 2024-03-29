@@ -99,7 +99,8 @@ module.exports={
 
 
      },
-     loginGET:(req,res)=>{
+     loginGET:async(req,res)=>{
+
       
         res.render("login")
     
@@ -110,7 +111,7 @@ module.exports={
           const data=await signupdatabase.findOne({email:email})
               req.session.email=data
           if(!data){
-               res.send("username not found")
+               res.send("user not found")
           }else{
               if(data.password==password){
                 res.redirect("/userhome")

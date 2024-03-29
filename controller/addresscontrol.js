@@ -15,7 +15,7 @@ module.exports={
             district:req.body.district,
             state:req.body.state,
             city:req.body.city,
-            hno:req.body.hno,
+            housename:req.body.housename,
             pin:req.body.pin
           }
           const newdata=await addressdatabase.findOneAndUpdate(
@@ -23,8 +23,8 @@ module.exports={
                {$push:{address:datas}},
                {upsert:true,new:true}
           )
-              res.redirect("/addaddress");
-              console.log(`hooonkkeee`);      
+
+             res.redirect("/checkout")    
            }catch(error){
             console.log(`error is add${error}`);
            }
