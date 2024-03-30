@@ -24,14 +24,20 @@ module.exports={
      checkoutGET:async(req,res)=>{
 
         const id=req.session.email._id
-     const addrdata=await addressdatabase.findOne({user:id})
+     const addrdatas=await addressdatabase.findOne({user:id})
      const userdata=await signupdatabase.findOne({_id:id})
+
+           
+
+
 
 
      let totalprice;
      const productid=req.query.id
      req.session.pyproductid= productid
      console.log(`buynow${productid}`);
+
+
 
           if(!req.session.pyproductid){
                const cart=await cartdatabase.findOne({userId:id}).populate('productId.id')
@@ -57,8 +63,12 @@ module.exports={
             updown:{$gte:totalprice}
 
           })
+          if(!addrdatas){
+            res.redirect("/addaddress")
+          }else{
          
-        res.render("checkout",{addrdata,userdata,totalprice,coupondata})
+        res.render("checkout",{addrdata:addrdatas || '',userdata,totalprice,coupondata})
+          }
      },
      applycouponPOST:async(req,res)=>{
   

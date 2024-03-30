@@ -22,7 +22,7 @@ module.exports={
          
         },0)
         discountTotal=datas.productId.reduce((acc,index)=>{
-            return(acc += index.id.price * index.quantity);
+            return(acc += index.id.Discount * index.quantity);
         },0);
             
           

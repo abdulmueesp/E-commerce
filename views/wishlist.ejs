@@ -238,7 +238,9 @@
                 </svg>
               </div>
             </div>
-           
+
+            <% if( datas.productId!=null){%>
+              <% if( datas.productId.length>0){%>
             <div class="cartBody d-flex">
               <div class="col-6 oneSection">
                 
@@ -308,11 +310,21 @@
               
              
             </div>
+            <% }else{ %> 
+              <h1 style="color:red;text-align: center;">your wishlist is empty</h1>
+               <img style="width:50%;" src="/images/cartImg/e763f7a49068517dd5fc3b6dc5006df8.jpg" alt="">
+
+             <% } %>
+
+            <% }else{ %>
+              <h1>your wishlist is empty</h1>
+              <img style="width:50%;" src="/images/cartImg/e763f7a49068517dd5fc3b6dc5006df8.jpg" alt="">
+               <% } %>
           </div>
         </div>
       </div>
 
-      <div class="container-fluid">
+      <!-- <div class="container-fluid">
         <div class="row">
           <div class="col-12">
             <div class="checkOut">
@@ -322,7 +334,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </main>
     <!-- end of main -->
 

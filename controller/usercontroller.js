@@ -66,14 +66,19 @@ module.exports={
             role:"user"
 
         })
-     
-    verification= await client.verify.v2
-    .services(verifySid)
-    .verifications.create({
-        to:`+91${phonerare}`,
-        channel:"sms",
-    });
-    
+                
+
+    // verification= await client.verify.v2
+    // .services(verifySid)
+    // .verifications.create({
+    //     to:`+91${phonerare}`,
+    //     channel:"sms",
+    // });
+         const signotp=generateOTP();
+
+         await sendResetPassemail(email,signotp);
+         req.session.signotp=signotp
+
        res.redirect("/otp")
         
      },
@@ -85,17 +90,24 @@ module.exports={
       
           const{otp}=req.body
           console.log(req.body)
-          
-          const verification_check = await client.verify.v2
-          .services(verifySid)
-          .verificationChecks.create({to:`+91${phonerare}`, code:otp});
+        const signuotp =req.session.signotp
 
-          if(verification_check.status=="approved"){
-            res.redirect("/login")
-          }else{
-            console.log("otp not corrected");
-            res.redirect("/signup")
-          }
+        if(signuotp==otp){
+          res.redirect("/login")
+        }else{
+          console.log(`not correct password`);
+        }
+          
+          // const verification_check = await client.verify.v2
+          // .services(verifySid)
+          // .verificationChecks.create({to:`+91${phonerare}`, code:otp});
+
+          // if(verification_check.status=="approved"){
+          //   res.redirect("/login")
+          // }else{
+          //   console.log("otp not corrected");
+           
+          // }
 
 
      },

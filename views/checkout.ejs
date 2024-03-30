@@ -239,17 +239,18 @@
               ></button>
             </div>
             <div class="modal-body">
-              <%addrdata.address.forEach((data)=>{ %>
-              <div class="chooseAdd existingAddress p-3 w-100 mb-3 position-relative">
-                <p class="name"><%=userdata.fullname %></p>
-                <p><%=data.housename %>,<%=data.pin %>,<%=data.locality %>,<%=data.city %>,<%=data.district %>,<%=data.state %>,<%=data.country%></p>
-                <p class="phone">Phone:<%=userdata.number%></p>
-                <input name="adId" class="position-absolute radio" type="radio" value="<%=data.housename %>,<%=data.pin %>,<%=data.locality %>,<%=data.city %>,<%=data.district %>,<%=data.state %>,<%=data.country%>">
-              </div>
-             
-              <% }) %>
+              <% if (addrdata && addrdata.address) { %>
+                  <% addrdata.address.forEach((data) => { %>
+                      <div class="chooseAdd existingAddress p-3 w-100 mb-3 position-relative">
+                          <p class="name"><%= userdata.fullname %></p>
+                          <p><%= data.housename %>,<%= data.pin %>,<%= data.locality %>,<%= data.city %>,<%= data.district %>,<%= data.state %>,<%= data.country %></p>
+                          <p class="phone">Phone:<%= userdata.number %></p>
+                          <input name="adId" class="position-absolute radio" type="radio" value="<%= data.housename %>,<%= data.pin %>,<%= data.locality %>,<%= data.city %>,<%= data.district %>,<%= data.state %>,<%= data.country %>">
+                      </div>
+                  <% }); %>
+              <% } %>
               <p class="m-0"><a href="/addaddress" class="button">Add Address</a></p>
-            </div>
+          </div>
             <div class="modal-footer">
               <button
                 type="button"
@@ -304,18 +305,23 @@
                     <div class="deleviryContent">
                       <div class="chooseAdd position-relative">
                         <div class="existingAddress">
-                          <p class="name"><%=userdata.fullname %></p>
-                          <p id="adreses" class="paymentadress">
-                            <%=addrdata.address[0].housename%>,
-                            <%=addrdata.address[0].pin%>,
-                            <%=addrdata.address[0].locality%>,
-                            <%=addrdata.address[0].city%>,
-                            <%=addrdata.address[0].district%>,
-                            <%=addrdata.address[0].state%>,
-                            <%=addrdata.address[0].country%>
-                          </p>
-                          <p class="phone">Phone:<%=userdata.number %></p>
-                        </div>
+                          <p class="name"><%= userdata.fullname %></p>
+                          <% if (addrdata && addrdata.address && addrdata.address.length > 0) { %>
+                              <p id="adreses" class="paymentadress">
+                                  <%= addrdata.address[0].housename %>,
+                                  <%= addrdata.address[0].pin %>,
+                                  <%= addrdata.address[0].locality %>,
+                                  <%= addrdata.address[0].city %>,
+                                  <%= addrdata.address[0].district %>,
+                                  <%= addrdata.address[0].state %>,
+                                  <%= addrdata.address[0].country %>
+                              </p>
+                          <% } else { %>
+                              <p>No address found</p>
+                          <% } %>
+                          <p class="phone">Phone:<%= userdata.number %></p>
+                      </div>
+                      
                         <a
                           href="/userChangeAddress"
                           data-bs-toggle="modal"

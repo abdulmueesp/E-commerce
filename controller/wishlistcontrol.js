@@ -8,7 +8,7 @@ module.exports={
         const id=req.session.email._id
       const datas= await wishlistdatabase.findOne({userId:id}).populate('productId');
 
-    res.render("wishlist",{datas})
+    res.render("wishlist",{datas:datas?datas:""})
 
 
     },

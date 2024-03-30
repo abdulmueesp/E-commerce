@@ -304,10 +304,10 @@
 
                           <% let productprice= ok.id.price * ok.quantity %>
                           <p class="lPrice<%=ok.id._id%>">₹<%=productprice?productprice:""%></p>
-                          <% let productdiscount = ok.id.price * ok.quantity %>
+                          <% let productdiscount = ok.id.Discount * ok.quantity %>
                           <p class="fPrice<%=ok.id._id%>">₹<%=productdiscount?productdiscount:""%></p>
-
-                          <p>49% OFF</p>
+                          <% let percentage =  Math.round((ok.id.Discount - ok.id.price)/ok.id.Discount * 100) %>
+                          <p><%=percentage %> OFF</p>
                         </div>
                       </div>
                      
