@@ -211,7 +211,7 @@
     </header>
     <!-- end of header -->
 
-    <!-- main -->
+   
     <main>
       <div class="container-fluid main">
         <div class="row mainContainer">
@@ -220,56 +220,47 @@
               <div class="d-flex align-items-center gap-2">
                 <h2 class="m-0 p-0">Orders</h2>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="15" viewBox="0 0 20 15" fill="none">
-                  <path d="M3 7H17V11C17 12.8856 17 13.8284 16.4142 14.4142C15.8284 15 14.8856 15 13 15H7C5.11438 15 4.17157 15 3.58579 14.4142C3 13.8284 3 12.8856 3 11V7Z" fill="black"/>
-                  <path d="M0.815301 3.8153L3 6L7 2L4.58869 0.392459C4.23591 0.157275 3.77317 0.170119 3.43399 0.424509L0.922408 2.30819C0.435568 2.67332 0.384992 3.38499 0.815301 3.8153Z" fill="black"/>
-                  <path d="M19.1847 3.8153L17 6L13 2L15.4113 0.392459C15.7641 0.157275 16.2268 0.170119 16.566 0.424509L19.0776 2.30819C19.5644 2.67332 19.615 3.38499 19.1847 3.8153Z" fill="black"/>
-                  <path d="M16 6V7H4V6L7 3H13L16 6Z" fill="black" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                  <!-- SVG paths -->
                 </svg>
               </div>
             </div>
-
+    
             <div class="cartBody d-flex">
               <div class="col-12 oneSection">
-                
-                <% oderdeatile.forEach((data)=>{ %>
-                    <% data.products.forEach(product=>{%>
-                 
-
-                <div class="cartItems d-flex w-100 justify-content-between align-items-center">
-                  <div class="d-flex align-items-center gap-3">
-                    <img src="/productimg/<%=product.id &&product.id.productimgf && product.id.productimgf[0]%>" alt="">
-                    <div class="textOrder d-flex flex-column gap-2">
-
-                      <h2 class="m-0"><%=product.id && product.id.productname%></h2>
-
-                      <p class="m-0">COLOR<span>: Black</span></p>
-            
-                    </div>
-                  </div>
-                  <div>
+                <% oderdeatile.forEach((data) => { %>
+                  <div class="cartItems d-flex w-100 justify-content-between align-items-center">
+                    <% data.products.forEach((product) => { %>
+                      <div class="d-flex align-items-center gap-3">
+                        <img src="/productimg/<%= product.id && product.id.productimgf && product.id.productimgf[0] %>" alt="">
+                        <div class="textOrder d-flex flex-column gap-2">
+                          <h2 class="m-0"><%= product.id && product.id.productname %></h2>
+                          <p class="m-0">COLOR<span>: Black</span></p>
+                        </div>
+                      </div>
+                    <% }) %>
                     <div class="d-flex align-items-center gap-2 prices">
                       <div class="lPrice marginRes">
-                        <p class="m-0">₹<%=data.totalprice %></p>
+                        <p class="m-0">₹<%= data.totalprice %></p>
                       </div>
                       <div class="d-flex align-items-center gap-2">
                         <div class="statusCircle"></div>
                         <p class="statusOrder me-3">Ordered</p>
                       </div>
-                      <button class="odcancbtn" onclick="location.href='/ordercancel/<%=data._id%>'" ><%= data.status == 'cancelled' ? 'cancelled' : 'cancell' %></button>
-                      <a href="/ordersummary?id=<%=data._id %>">
-                        <div>deatiles</div>
+                      <button class="odcancbtn" onclick="location.href='/ordercancel/<%= data._id %>'"><%= data.status == 'cancelled' ? 'cancelled' : 'cancell' %></button>
+                      <a href="/ordersummary?id=<%= data._id %>">
+                        <div>details</div>
                       </a>
                     </div>
                   </div>
-                </div>
-              <% }) %>
                 <% }) %>
-                </div>
               </div>
             </div>
           </div>
-          </div>
+        </div>
+      </div>
     </main>
+    
+    
     <!-- end of main -->
 
     <!-- footer -->

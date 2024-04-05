@@ -12,6 +12,8 @@ router.get("/adminlogin",admincontrol.adminloginGET);
 router.post("/adminlogin",admincontrol.adminloginPOST);
 router.get("/adminHome",admincontrol.adminHomeGET);
 router.get("/userslist",admincontrol.userslistGET);
+router.get("/adoders",admincontrol.adminordersGET);
+router.get("/deliv/:id",admincontrol.orderdeliveredGET);
 
 
 

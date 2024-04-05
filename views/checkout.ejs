@@ -334,26 +334,28 @@
                       </div>
                     </div>
                   </div>
+                  <div class="coupons">
+                    <form
+                      action="/userApplyCoupon"
+                      class="d-flex align-items-center"
+                      method="post"
+                    >
+                      <div class="input">
+                        <input type="text"  placeholder="Enter Coupon Code"   class="couponinp" />
+                      </div>
+                      <div>
+                        <button type="submit" onclick="applycoupon(event,'<%=totalprice%>')">APPLY</button>
+                      </div>
+                    </form>
+                    <div class="couponbox"><%=coupondata?.couponcode%></div>
+                  </div>
+  
                 </div>
+                
+
               </div>
+              
               <div class="col-6 oneSection">
-
-                <div class="coupons">
-                  <form
-                    action="/userApplyCoupon"
-                    class="d-flex align-items-center"
-                    method="post"
-                  >
-                    <div class="input">
-                      <input type="text" placeholder="Enter Coupon Code" class="couponinp" />
-                    </div>
-                    <div>
-                      <button type="submit" onclick="applycoupon(event,'<%=totalprice%>')">APPLY</button>
-                    </div>
-                  </form>
-                  <div class="couponbox"><%=coupondata?.couponcode%></div>
-                </div>
-
 
                 <div class="orderSummary">
                   <div class="orderHeading">

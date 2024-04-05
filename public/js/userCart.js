@@ -69,6 +69,7 @@ async function decrement(id,price,stock,discount){
           const totalui=await response.data.total
           tprice.innerHTML=`₹${totalui}`;
           sTotal.innerHTML=`₹${totalui}`;
+          fprice.innerHTML=`₹${newdiscount}`;
 
             if(qtyval <= stockval){
               // lprice.classList.remove("red");

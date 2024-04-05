@@ -24,7 +24,10 @@ const{
     loginPOST,
     userhomeGET,
     productdeaileGET,
-    productsHomeGET
+    productsHomeGET,
+    userEDitGET,
+    userEDitPOST,
+    userlogoutGET
 }=require("../controller/usercontroller");
 
 router.get("/signup",signupGET)
@@ -40,9 +43,13 @@ router.post("/resetpass",resetpassPOST)
 
 router.get("/login",loginGET)
 router.post("/login",loginPOST)
+router.get("/userLogOut",userlogoutGET)
 
 router.get("/userhome",userhomeGET)
 router.get("/productdeatile/:id",productdeaileGET)
+router.get("/useredit",userEDitGET)
+router.post("/useredit",userEDitPOST)
+
 
 
 
@@ -86,5 +93,7 @@ router.get("/categotyf/:category",categorycontroler.categoryfilterGET)
 
 router.get("/filterprice",productcontrole.filterpriceGET)
 router.get("/highlowfilter",productcontrole.highlowsortGET)
+
+
 
 module.exports=router;

@@ -8,6 +8,8 @@ const signupdatabase=require("../model/signup")
 const bannerdatabase=require("../model/banner")
 const productdatabase=require("../model/product")
 const wishlistdatabase=require("../model/wishlist")
+const reviewdatabase=require("../model/review")
+
 require("dotenv").config()
 
 // const{body,validationResult}=require("express-validator")
@@ -75,6 +77,7 @@ module.exports={
     //     channel:"sms",
     // });
          const signotp=generateOTP();
+
 
          await sendResetPassemail(email,signotp);
          req.session.signotp=signotp
@@ -208,18 +211,24 @@ module.exports={
 
         },
         productdeaileGET:async(req,res)=>{
+          if(req.session.email){
           const id=req.params.id
          const userid=req.session.email._id
          let existingproduct=false;
           const datas=await productdatabase.findById(id)
          const wishdata=await wishlistdatabase.findOne({userId:userid})
         const existproduct=wishdata?.productId.find(productId=>productId.equals(id))
+       const review=await reviewdatabase.findOne({productID:id}).populate('review.userid')
+
         if(existproduct!==undefined){
               existingproduct=true
         }
          
 
-          res.render("productdeatilepage",{datas,existingproduct})
+          res.render("productdeatilepage",{datas,existingproduct,review})
+      }else{
+        res.redirect("/login")
+      }
         },
        productsHomeGET:async(req,res)=>{
             try{
@@ -235,5 +244,47 @@ module.exports={
             }catch(error){
               console.log(`error is productshome${error}`);
             }
-       }
+       },
+       userEDitGET:async(req,res)=>{
+        if(req.session.email){
+
+          const id=req.session.email._id
+
+          const data=await signupdatabase.findOne({_id:id})
+          
+          res.render("useredit",{data})
+        }else{
+          res.redirect("/login")
+        }
+          
+       },
+      userEDitPOST:async(req,res)=>{
+
+        const {fName,email,phone,cPass}=req.body
+        const id=req.session.email._id
+        await signupdatabase.updateOne({_id:id},{$set:{
+          fullname:fName,
+          email:email,
+          number:phone,
+          password:cPass
+        }})
+        res.redirect("/userprofile");
+
+
+      },
+      userlogoutGET:(req,res)=>{
+        try{
+          req.session.destroy((err)=>{
+            if(err){
+              console.error("Error destroying session ",err)
+            }else{
+              console.log("session destroy ")
+              res.redirect('/login')
+            }
+          })
+
+        }catch(error){
+          console.log(`error is logout${error}`);
+        }
+      }
 }

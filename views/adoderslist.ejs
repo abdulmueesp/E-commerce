@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="/css/addcoupon.css">
+    <link rel="stylesheet" href="/css/adoderslist.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.7.1.slim.js"></script>
 </head>
@@ -15,7 +15,7 @@
     <section id="menu">
         <div class="logo">
             <img src="/images/Screenshot__27_-removebg-preview.png" alt="">
-            <h2>Mstore</h2>
+            <h2>shoprey</h2>
         </div>
         <div class="items">
             <li>
@@ -55,49 +55,55 @@
             </div>
 
             <div class="profile">
-               
+                
                 <img src="/images/149071.png" alt="">
             </div>
         </div>
 
-        <h3 class="i-name">Add banner</h3>
-      
-        <div class="board">
-            <div class="productform">
-            <form action="/addcoupon" method="post" >
-                
-                   
-                <div class="form-group">
-                    <label for="">Coupon code:</label>
-                    <input type="text" name="couponcode" >
-                </div>
-                <div class="form-group">
-                    <label for="">discount</label>
-                    <input type="text"  name="discount">
-                </div>
-                <div class="form-group">
-                    <label for="">upto</label>
-                    <input type="text"  name="upto">
-                </div>
-               
-                <div class="form-group">
-                    <label for="">updown</label>
-                    <input type="text"  name="updown">
-                </div>
-                        <div class="form-group">
-                            <label for="">Valid from</label>
-                            <input type="date" name="validfrom">
-                            </div>
+        <h3 class="i-name">Uerslist</h3>
 
-                            <div class="form-group">
-                                <label for="">Valid to</label>
-                                <input type="date" name="validto">
-                                </div>
-                           
-                <button type="submit">Add</button>
-                </form>
-                </div>
-        </div>
+
+        <dir class="board">
+            <table width="100%"> 
+                <thead>
+                    <tr>
+                        <td>ODER_ID</td>
+                        <td>PAYMENT METHOD</td>
+                        <td>STATUS</td>
+                        <td>DELIVERED</td>
+                        <!-- <td>Role</td> -->
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                   <%oders.forEach((data)=>{ %>
+                    <tr>
+                        <td class="people"> 
+                            <img src="/images/flat-business-man-user-profile-avatar-icon-vector-4333097.jpg" alt="">
+                            <div class="people-de">
+                                <h5><%=data._id %></h5>
+                                <!-- <p>kakavayil@gmail.com</p> -->
+                            </div>
+                        </td>
+
+                        <td class="people-des">
+                          <h5><%=data.paymentMethod %></h5>
+                          <!-- <p>web dev</p> -->
+                        </td>
+
+                        <td class="active"><p><%=data.status %></p></td>
+
+                        <!-- <td class="role"> <p>Owner</p></td> -->
+
+                        <td class="edit"> <a href='/deliv/<%= data._id %>'><%= data.status == 'delivered' ? 'delivered' : 'no delivered' %></a></td>
+                    </tr>
+
+
+        
+                </tbody>
+                <% }) %>
+            </table>
+        </dir>
     </section>
 
     <script>
@@ -105,7 +111,6 @@
            $('#menu').toggleClass('active')
         })
     </script>
-        
 </body>
 
 </html>

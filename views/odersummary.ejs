@@ -248,30 +248,88 @@
                 </div>
               </div>
               <% }) %>
+              
+              <%if(useroders.status=='delivered' || useroders.status=='pending'){%>
               <div class="ODhead pt-4 pb-4">
                 <div class="d-flex gap-3 align-items-center">
                   <p class="dot done"></p>
-                  <p id="oText">Ordered Confirmed, Jul 01, 2023</p>
+
+                  <p id="oText">Ordered Confirmed,<%=useroders.createdAt.toISOString().substring(0,10) %></p>
+
                 </div>
                 <div class="lineParent position-relative">
+
                     <div class="line position-relative doneLine">
 
                     </div>
+
                 </div>
+
                 <div class="d-flex gap-3 align-items-center">
                   <p class="dot done"></p>
                   <p id="oText">Shipped</p>
                 </div>
+
+                <% if(useroders.status=='delivered') {%>
                 <div class="lineParent position-relative">
                     <div class="line position-relative doneLine">
 
                     </div>
                 </div>
+
                 <div class="d-flex gap-3 align-items-center">
                   <p class="dot done"></p>
                   <p id="oText">Delivered</p>
                 </div>
+                <% }else{ %>
+                  <div class="lineParent position-relative">
+                    <div class="line position-relative doneLine" style="background-color: rgb(184,180,180);">
+                    </div>
+                </div>
+
+                <div class="d-flex gap-3 align-items-center">
+                  <p class="dot done" style="background-color:rgb(184,180,180) ;"></p>
+                  <p id="oText">Delivered</p>
+                </div>
+                
+                <% } %>
+                <% } %>
+ 
+                <% if(useroders.status=='cancelled'){ %>
+                  <div class="ODhead pt-4 pb-4">
+                    <div class="d-flex gap-3 align-items-center">
+                      <p class="dot done" style="background-color: red;"></p>
+                      <p id="oText">Ordered Confirmed</p>
+                    </div>
+
+                    <div class="lineParent position-relative">
+
+                      <div class="line position-relative doneLine" style="background-color: red;">
+  
+                      </div>
+  
+                  </div>
+                  <div class="d-flex gap-3 align-items-center">
+                    <p class="dot done" style="background-color: red;" ></p>
+                    <p id="oText">Shipped</p>
+                  </div>
+  
+                  <div class="lineParent position-relative">
+                    <div class="line position-relative doneLine" style="background-color: red;">
+
+                    </div>
+
+                </div>
+
+                <div class="d-flex gap-3 align-items-center">
+                  <p class="dot done" style="background-color: red;"></p>
+                  <p id="oText">cancelled</p>
+                </div>
+                  </div>
               </div>
+            <% } %>
+
+
               <div class="ODhead sDetails">
                 <p>Shipping Details</p>
               </div>
@@ -280,6 +338,7 @@
                 <p class="text-capitalize"><%=useroders?.address%></p>
                 <p>Phone:<%=userdeatiles.number%></p>
               </div>
+
               <div class="ODhead sDetails">
                 <p>Price Details</p>
               </div>

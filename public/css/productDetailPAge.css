@@ -33,6 +33,7 @@ a{
     --bs-border-color: rgba(255, 255, 255, 0.40);
     --bs-accordion-btn-focus-border-color: transparent;
 }
+
 .accordion-button:not(.collapsed) {
     color: white;
     background-color: transparent;

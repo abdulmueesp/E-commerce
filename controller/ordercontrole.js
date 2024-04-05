@@ -55,6 +55,7 @@ module.exports={
                      const productdataq=await productdatabase.findById(productID);
 
                      totalprice=productdataq.price
+                     req.session.totalprice=totalprice
 
           }
           const coupondata=await coupondatabase.findOne({
@@ -112,7 +113,9 @@ module.exports={
                   ]
                   carts=products
              }else{
+               
                carts=usercart.productId
+              
              }
                  const orders= new orderdatabase({
                   userid:req.session.email._id,
@@ -168,8 +171,8 @@ module.exports={
                   }
                ]
                carts=products
-               carts=cartsdt.productId
              }else{
+               
                  carts=cartsdt.productId
                  
              }
@@ -182,15 +185,10 @@ module.exports={
 
              })
              await oders.save()
-
-             if (!req.session.pyproductid) {
-               try {
-                   await cartdatabase.deleteOne({ userid: userid });
-                   console.log('Cart deleted successfully.');
-               } catch (error) {
-                   console.error('Error deleting cart:', error);
-               }
-           }
+             if(!req.session.pyproductid){
+               await cartdatabase.deleteOne({userId:userid})
+            }
+             
 
 
              delete req.session.pyproductid

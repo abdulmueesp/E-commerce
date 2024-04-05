@@ -34,7 +34,7 @@
                   </button>
                 </div>
 
-                <img src="/images/Shoprey.com_550x_372.png" alt="" width="170px" height="100px">
+                <img src="/images/Shoprey.com_550x_372.png" alt="" width="155px" height="100px">
               </div>
 
               <div class="navigationnavbar">
@@ -339,12 +339,14 @@
               >
                 <h2>Ratings & Reviews</h2>
                 <a href="/userProductRate/id">
-                  <button>Rate Product</button>
+                  <!-- <button>Rate Product</button> -->
                 </a>
               </div>
               <div class="content">
+                <% if(review) {%>
+
+                <% review.review.forEach(data=>{ %>
                 <div class="userReview">
-                  <h2>Great product</h2>
                   <div class="rating d-flex">
                     <p class="ratedStar">★</p>
                     <p class="ratedStar">★</p>
@@ -353,72 +355,14 @@
                     <p class="ratedStar">★</p>
                   </div>
                   <p class="reviewDetails">
-                    It's sound quality is perfect as well as very loud and
-                    clear. It's built quality is upto the mark because it's
-                    woofer is made up of wood which is very good and it's bass
-                    and treble is very amazing after all you can listen any song
-                    and watch any movie like cinema hall experience. Overall it
-                    is best for this price.
+                    <%=data.comment %>
                   </p>
-                  <p class="ratedUserName">User 1</p>
+                  <p class="ratedUserName"><%=data.userid.fullname %></p>
                 </div>
-                <div class="userReview">
-                  <h2>Great product</h2>
-                  <div class="rating d-flex">
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                  </div>
-                  <p class="reviewDetails">
-                    It's sound quality is perfect as well as very loud and
-                    clear. It's built quality is upto the mark because it's
-                    woofer is made up of wood which is very good and it's bass
-                    and treble is very amazing after all you can listen any song
-                    and watch any movie like cinema hall experience. Overall it
-                    is best for this price.
-                  </p>
-                  <p class="ratedUserName">User 1</p>
-                </div>
-                <div class="userReview">
-                  <h2>Great product</h2>
-                  <div class="rating d-flex">
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                  </div>
-                  <p class="reviewDetails">
-                    It's sound quality is perfect as well as very loud and
-                    clear. It's built quality is upto the mark because it's
-                    woofer is made up of wood which is very good and it's bass
-                    and treble is very amazing after all you can listen any song
-                    and watch any movie like cinema hall experience. Overall it
-                    is best for this price.
-                  </p>
-                  <p class="ratedUserName">User 1</p>
-                </div>
-                <div class="userReview">
-                  <h2>Great product</h2>
-                  <div class="rating d-flex">
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                    <p class="ratedStar">★</p>
-                  </div>
-                  <p class="reviewDetails">
-                    It's sound quality is perfect as well as very loud and
-                    clear. It's built quality is upto the mark because it's
-                    woofer is made up of wood which is very good and it's bass
-                    and treble is very amazing after all you can listen any song
-                    and watch any movie like cinema hall experience. Overall it
-                    is best for this price.
-                  </p>
-                  <p class="ratedUserName">User 1</p>
-                </div>
+                <% })%>
+                <% }else{ %>
+                  <h2 style="text-align: center;font-style: italic;">no reviews</h2>
+                  <% } %>
               </div>
             </div>
           </div>

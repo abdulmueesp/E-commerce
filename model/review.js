@@ -9,4 +9,4 @@ const reviewschema=new mongoose.Schema({
 })
 
 const reviewmodel=mongoose.model("reviews",reviewschema);
-module.exports=reviewmodel;
+module.exports=reviewmodel

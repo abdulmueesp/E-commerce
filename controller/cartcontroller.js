@@ -106,9 +106,12 @@ module.exports={
             const subtotal=datas.productId.reduce((acc,index)=>{
                 return(acc += index.id.price * index.quantity)
             },0)
+            const discount=datas.productId.reduce((acc,index)=>{
+                return(acc += index.id.Discount * index.quantity)
+            },0)
            
 
-            res.status(200).json({success:true,total:subtotal})
+            res.status(200).json({success:true,total:subtotal,discount})
             
         }catch(error){
            console.log(`error is quan up${error}`);

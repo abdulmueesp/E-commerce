@@ -34,6 +34,14 @@ a {
   --bs-border-color: rgba(255, 255, 255, 0.4);
   --bs-accordion-btn-focus-border-color: transparent;
 }
+.logoutbtn{
+  width: 75px;
+  height: 30px;
+  background-color: black;
+  color: white;
+  border-radius:18px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
 .accordion-button:not(.collapsed) {
   color: white;
   background-color: transparent;
@@ -151,8 +159,8 @@ a {
 }
 .navigation {
   width: 100vw;
-  height: 62px;
-  background: linear-gradient(180deg, #d9d9d9 -406.45%, #000 139.51%);
+  height:80px;
+  background: linear-gradient(180deg, #b0ec96 -406.45%, #ffffff 139.51%);
 }
 .hamburger {
   position: relative;
@@ -166,7 +174,7 @@ a {
   width: 30px;
   height: 2px;
   margin: 10px 0;
-  background: white;
+  background: rgb(0, 0, 0);
   transform-origin: center center;
   transition: all 0.2s linear 0.1s;
 }
@@ -189,7 +197,7 @@ a {
   margin-right: 2rem;
 }
 .navigationnavbar ul li a {
-  color: #fff;
+  color: #000000;
   font-family: Inter;
   font-size: 0.9rem;
   font-style: normal;
