@@ -15,7 +15,7 @@ module.exports={
             Title,
             expirydate,
             description,
-            bannerimage
+            bannerimage,
         })
         await newdata.save();
         res.redirect("/banner")

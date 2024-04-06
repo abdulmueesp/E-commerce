@@ -28,7 +28,7 @@ async function deletecart(event,id){
       text: "Your file has been deleted.",
        icon: "success"
        });
-       document.querySelector('.cartItems').remove()
+       document.getElementById('removecardd').remove()
       }else{
           message.innerHTML=result.Error || "unknown error"
       }

@@ -152,8 +152,9 @@ a {
 .navigation {
   width: 100vw;
   height:80px;
-  background: linear-gradient(to bottom, #ffffff 0%, #e1f0e3 100%);
+  background: linear-gradient(180deg, #b0ec96 -406.45%, #ffffff 139.51%);
 }
+
 .hamburger {
   position: relative;
   background: transparent;

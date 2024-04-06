@@ -302,6 +302,7 @@ a {
 }
 .carousel-item img {
   object-fit: cover;
+
 }
 .carousel-inner img {
   min-height: 44vw;
@@ -694,7 +695,9 @@ footer {
   }
   .slideProduct {
     display: none;
+
   }
+  
   .main-body h2 {
     font-size: 2.5rem;
   }

@@ -61,9 +61,6 @@
                   <li>
                     <a href="/smartWatch"> Smart Watch </a>
                   </li>
-                  <li>
-                    <a href="/"> Shop By Category </a>
-                  </li>
                 </ul>
               </div>
 
@@ -114,7 +111,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="/userOrders">
+                    <a href="/useroders">
                       <svg
                         width="20"
                         height="20"
@@ -219,7 +216,7 @@
                 <div class="cartItems">
                   <% datas.productId.forEach((ok)=>{%>
            
-                  <div class="items position-relative">
+                  <div class="items position-relative" id="removecardd">
                     
                     <a
                       class="position-absolute deleteBtn"
@@ -353,12 +350,12 @@
             </div>
              
             <% }else{ %> 
-              <h1 style="color:red;text-align: center;">your cart is empty</h1>
+              <h3 style="font-family: sans-serif; font-style: italic; text-align: center; " >your cart is empty</h3>
                <img style="width:50%;" src="/images/cartImg/e763f7a49068517dd5fc3b6dc5006df8.jpg" alt="">
 
              <% } %>
              <% }else{ %>
-              <h1>your cart is empty</h1>
+              <h3 style="font-family: sans-serif; font-style: italic; text-align: center;" >your cart is empty</h3>
               <img style="width:50%;" src="/images/cartImg/e763f7a49068517dd5fc3b6dc5006df8.jpg" alt="">
                <% } %>
           </div>

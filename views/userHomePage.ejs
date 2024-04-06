@@ -19,7 +19,6 @@
   <body>
     <!-- header -->
     <header>
-
       <nav>
         <div class="container-fluid">
           <div class="row navigation">
@@ -34,8 +33,12 @@
                     <span class="d-block mb-0"></span>
                   </button>
                 </div>
-               <img src="/images/Shoprey.com_550x_372.png" alt="" width="155px" height="100px">
-               
+                <img
+                  src="/images/Shoprey.com_550x_372.png"
+                  alt=""
+                  width="155px"
+                  height="100px"
+                />
               </div>
 
               <div class="navigationnavbar">
@@ -58,9 +61,6 @@
                   <li>
                     <a href="/smartWatch"> Smart Watch </a>
                   </li>
-                  <li>
-                    <a href="/"> Shop By Category </a>
-                  </li>
                 </ul>
               </div>
 
@@ -68,7 +68,7 @@
                 <h2>Shop By Category</h2>
                 <ul class="m-0 list-unstyled">
                   <li>
-                    <a href="/earbuds"> Earbuds </a>
+                    <a href=""> Earbuds </a>
                   </li>
                   <li>
                     <a href="/earphones"> Earphones </a>
@@ -111,7 +111,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="/useroders">
                       <svg
                         width="20"
                         height="20"
@@ -187,6 +187,7 @@
             >
               <div class="carousel-inner">
                  <%bandata.forEach((data)=>{ %>
+                  
                 <div
                   class="carousel-item active"
                   data-bs-interval="6000"
@@ -199,9 +200,35 @@
                       class="w-100 img-large-screen"
                       alt="..."
                   /></a>
+                  <a href=""
+                    ><img
+                      src="/images/new3.jpg"
+                      class="w-100 img-small-screen"
+                      alt="..."
+                  /></a>
+                  </div>
+                  <div
+                  class="carousel-item active"
+                  data-bs-interval="6000"
+                  data-bs-pause="false"
+                  data-bs-ride="false"
+                >
+                <a href=""
+                    ><img
+                      src="productimg/<%=data.bannerimage %>"
+                      class="w-100 img-large-screen"
+                      alt="..."
+                  /></a>
+                  <a href=""
+                    ><img
+                      src="/images/new5.jpg"
+                      class="w-100 img-small-screen"
+                      alt="..."
+                  /></a>
                 </div>
                 <%});%>
               </div>
+         
               <button
                 class="carousel-control-prev"
                 type="button"
@@ -244,13 +271,16 @@
                   <ul
                     id="newlyLaunched"
                     class="newlyLaunched position-relative p-0 d-flex align-items-center list-unstyled"
-                  >  
-                  <%productdata.forEach((datas)=>{ %>
+                  >
+                    <%productdata.forEach((datas)=>{ %>
                     <li>
                       <a href="/productdeatile/<%=datas.id%>">
                         <div class="newItems">
                           <div class="productImg">
-                            <img src="productimg/<%=datas.productimgf[0] %>" alt="" />
+                            <img
+                              src="productimg/<%=datas.productimgf[0] %>"
+                              alt=""
+                            />
                           </div>
                           <div class="text-area">
                             <div class="productTittle">
@@ -266,8 +296,8 @@
                               <div>
                                 <p><%=datas.description %></p>
                               </div>
-                              </div>
-            
+                            </div>
+
                             <div class="colorOptions">
                               <div class="d-flex align-items-center">
                                 <p>Colors</p>
@@ -325,17 +355,18 @@
                     </li>
                     <%});%>
                   </ul>
-
                 </div>
               </div>
             </div>
           </div>
         </div>
         <!-- created  -->
-       <div class="bbttmain">
-        <button class="allpbtn"><a href="/productshome" class="allbtna">All products</a></button>
-       </div>
-       <!-- end  -->
+        <div class="bbttmain">
+          <button class="allpbtn">
+            <a href="/productshome" class="allbtna">All products</a>
+          </button>
+        </div>
+        <!-- end  -->
       </div>
     </main>
     <!-- end of main -->

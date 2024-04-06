@@ -86,7 +86,7 @@ module.exports={
         
      },
      otpGET:(req,res)=>{
-        res.render("otp")
+        res.render("otp",{ errorMessage: null })
         
      },
      otpPOST:async(req,res)=>{
@@ -98,7 +98,7 @@ module.exports={
         if(signuotp==otp){
           res.redirect("/login")
         }else{
-          console.log(`not correct password`);
+          return res.render('otp', { errorMessage: "please enter valid otp" });
         }
           
           // const verification_check = await client.verify.v2
@@ -116,8 +116,7 @@ module.exports={
      },
      loginGET:async(req,res)=>{
 
-      
-        res.render("login")
+      res.render('login', { errorMessage: null }); 
     
      },
      loginPOST:async(req,res)=>{
@@ -126,18 +125,18 @@ module.exports={
           const data=await signupdatabase.findOne({email:email})
               req.session.email=data
           if(!data){
-               res.send("user not found")
+            return res.render('login', { errorMessage: "User not found" });
           }else{
               if(data.password==password){
                 res.redirect("/userhome")
               }else{
-                res.send("wrong password")
+                return res.render('login', { errorMessage: "incorrect password" });
               }
           }
 
      },
      forgetpsGET:(req,res)=>{
-      res.render("forgetps")
+      res.render("forgetps",{ errorMessage: null })
      },
      forgetpsPOST:async(req,res)=>{
    const {email}=req.body
@@ -147,9 +146,7 @@ module.exports={
        const user=await signupdatabase.findOne({email})
    
         if(!user){
-          console.log("not take email");
-          res.redirect("/forgetps")
-
+          return res.render('forgetps', { errorMessage: "not found email" });
         }
         await sendResetPassemail(email,otp);
         req.session.otp=otp
@@ -163,7 +160,7 @@ module.exports={
 
      },
      forgetotpGET:(req,res)=>{
-      res.render("forgetotp")
+      res.render("forgetotp",{ errorMessage: null })
      },
      forgetotpPOST:async(req,res)=>{
         const otps=req.session.otp
@@ -173,13 +170,12 @@ module.exports={
         res.redirect("/resetpass")
         console.log("email otp verified"); 
       }else{
-        res.redirect("/forgetotp")
-        console.log("not correct email otp")
+        return res.render('forgetotp', { errorMessage: "please enter valid otp" });
       }
 
      },
      resetpassGET:(req,res)=>{
-      res.render("resetpass")
+      res.render("resetpass",{ errorMessage: null })
      },
      resetpassPOST:async(req,res)=>{
           const{password,password2}=req.body
@@ -193,8 +189,7 @@ module.exports={
         res.redirect("/login")
 
           }else{
-                  console.log("not corrected password");
-                  res.redirect("/resetpass")
+            return res.render('resetpass', { errorMessage: "passwords no matched" });
           }
      },
         userhomeGET:async(req,res)=>{
