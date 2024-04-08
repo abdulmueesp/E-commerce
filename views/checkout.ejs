@@ -243,9 +243,18 @@
                   <% addrdata.address.forEach((data) => { %>
                       <div class="chooseAdd existingAddress p-3 w-100 mb-3 position-relative">
                           <p class="name"><%= userdata.fullname %></p>
-                          <p><%= data.housename %>,<%= data.pin %>,<%= data.locality %>,<%= data.city %>,<%= data.district %>,<%= data.state %>,<%= data.country %></p>
+                          <p><%= data.housename %>,<%= data.pin %>,
+                            <%= data.locality %>,<%= data.city %>,
+                            <%= data.district %>,<%= data.state %>,
+                            <%= data.country %></p>
                           <p class="phone">Phone:<%= userdata.number %></p>
-                          <input name="adId" class="position-absolute radio" type="radio" value="<%= data.housename %>,<%= data.pin %>,<%= data.locality %>,<%= data.city %>,<%= data.district %>,<%= data.state %>,<%= data.country %>">
+                          <input name="adId" class="position-absolute radio" type="radio" value="<%= data.housename %>,
+                          <%= data.pin %>,
+                          <%= data.locality %>,
+                          <%= data.city %>,
+                          <%= data.district %>,
+                          <%= data.state %>,
+                          <%= data.country %>">
                       </div>
                   <% }); %>
               <% } %>
