@@ -50,6 +50,9 @@ const generateOTP=()=>{
 
 
 module.exports={
+  userRedirect:(req,res)=>{
+    res.redirect('/login')
+  },
     signupGET:(req,res)=>{
         res.render("signup")
     },

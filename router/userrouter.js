@@ -10,6 +10,7 @@ const categorycontroler=require("../controller/categorycontrol")
 const productcontrole=require("../controller/productcontrol")
 
 const{
+    userRedirect,
     signupGET,
     signupPOST,
     otpGET,
@@ -30,6 +31,7 @@ const{
     userlogoutGET
 }=require("../controller/usercontroller");
 
+router.get("/",userRedirect)
 router.get("/signup",signupGET)
 router.post("/signup",signupPOST)
 router.get("/otp",otpGET)
