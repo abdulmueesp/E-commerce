@@ -142,8 +142,8 @@ a{
 }
 .navigation{
     width: 100vw;
-    height: 62px;
-    background: linear-gradient(180deg, #D9D9D9 -406.45%, #000 139.51%);
+    height:80px;
+    background: linear-gradient(180deg, #b0ec96 -406.45%, #ffffff 139.51%);
 }
 .hamburger{
     position: relative;
@@ -157,7 +157,7 @@ a{
     width: 30px;
     height: 2px;
     margin: 10px 0;
-    background: white;
+    background: rgb(0, 0, 0);
     transform-origin: center center;
     transition: all .2s linear .1s;
 }
@@ -180,7 +180,7 @@ a{
     margin-right: 2rem;
 }
 .navigationnavbar ul li a{
-    color: #FFF;
+    color: #000000;
     font-family: Inter;
     font-size: 0.90rem;
     font-style: normal;
@@ -345,7 +345,7 @@ input::-webkit-inner-spin-button {
 .searchBar{
     width: 100vw;
     height: 4rem;
-    background: linear-gradient(298deg, #111216 -34.19%, rgba(91, 99, 120, 0.00) 1164.24%);
+    background: linear-gradient(298deg, #010412 -34.19%, rgba(91, 99, 120, 0.00) 1164.24%);
 }
 .searchBox input{
     outline: none;
@@ -369,7 +369,7 @@ input::-webkit-inner-spin-button {
     width: 3vw;
     height: 2rem;
     border-radius: 0rem 0.25rem 0.25rem 0rem;
-    background: #0F0;
+    background: rgb(108, 228, 108);
     border: none;
 }
 .sortOption{

@@ -155,8 +155,8 @@ a {
 }
 .navigation {
   width: 100vw;
-  height: 62px;
-  background: linear-gradient(180deg, #d9d9d9 -406.45%, #000 139.51%);
+  height:80px;
+  background: linear-gradient(180deg, #b0ec96 -406.45%, #ffffff 139.51%);
 }
 .hamburger {
   position: relative;
@@ -166,11 +166,18 @@ a {
   height: 20px;
   z-index: 2;
 }
+.gotohbtn{
+  border-radius: 10px;
+  width: 90px;
+  background-color: rgb(2, 13, 37);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 .hamburger span {
   width: 30px;
   height: 2px;
   margin: 10px 0;
-  background: white;
+  background: rgb(0, 0, 0);
   transform-origin: center center;
   transition: all 0.2s linear 0.1s;
 }
@@ -193,7 +200,7 @@ a {
   margin-right: 2rem;
 }
 .navigationnavbar ul li a {
-  color: #fff;
+  color: #000000;
   font-family: Inter;
   font-size: 0.9rem;
   font-style: normal;
