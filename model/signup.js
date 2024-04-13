@@ -3,8 +3,8 @@ mongoose.connect("mongodb+srv://abdulmuees55:wee7KoE3nQ13yuCF@cluster0.a61zxo7.m
 .then(()=>{
     console.log("mongodb connected");
 })
-.catch(()=>{
-    console.log("failed to connect");
+.catch((err)=>{
+    console.log("failed to connect",err);
 })
 
 
