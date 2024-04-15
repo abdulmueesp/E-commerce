@@ -55,8 +55,8 @@ module.exports={
     categoryfilterGET:async(req,res)=>{
       try{
        const category=req.params.category
-       const categorydt=await productdatabase.find({category:category})
-       res.render("producthome",{products:categorydt})
+       const products=await productdatabase.find({category:category})
+       res.render("producthome",{products})
           
 
       }catch(error){
