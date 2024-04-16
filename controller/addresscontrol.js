@@ -24,7 +24,7 @@ module.exports={
                {upsert:true,new:true}
           )
 
-             res.redirect("/checkout")    
+             res.redirect("/userhome")    
            }catch(error){
             console.log(`error is add${error}`);
            }
