@@ -24,7 +24,7 @@ module.exports={
                {upsert:true,new:true}
           )
 
-             res.redirect("/userhome")    
+             res.redirect("/productshome")    
            }catch(error){
             console.log(`error is add${error}`);
            }
