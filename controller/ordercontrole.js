@@ -64,12 +64,9 @@ module.exports={
             updown:{$gte:totalprice}
 
           })
-          if(!addrdatas){
-            res.redirect("/addaddress")
-          }else{
-         
+        
         res.render("checkout",{addrdata:addrdatas || '',userdata,totalprice,coupondata})
-          }
+          
      },
      applycouponPOST:async(req,res)=>{
   

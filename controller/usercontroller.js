@@ -1,4 +1,5 @@
 const express=require("express")
+const mongoose=require("mongoose")
 
 const { Client } = require("twilio/lib/base/BaseTwilio");
 const smtpTransport=require("nodemailer-smtp-transport")
@@ -9,6 +10,7 @@ const bannerdatabase=require("../model/banner")
 const productdatabase=require("../model/product")
 const wishlistdatabase=require("../model/wishlist")
 const reviewdatabase=require("../model/review")
+const addressdatabase=require("../model/address")
 
 require("dotenv").config()
 
@@ -71,7 +73,7 @@ module.exports={
             role:"user"
 
         })
-                
+      
 
     // verification= await client.verify.v2
     // .services(verifySid)
@@ -131,6 +133,26 @@ module.exports={
             return res.render('login', { errorMessage: "User not found" });
           }else{
               if(data.password==password){
+
+                const id=req.session.email._id
+                const userid=new mongoose.Types.ObjectId(id)
+
+                const datas={
+                  locality:"nill",
+                  country:"nill",
+                  district:"nill",
+                  state:"nill",
+                  city:"nill",
+                  housename:"nill",
+                  pin:1234
+                }
+                const newdata=await addressdatabase.findOneAndUpdate(
+                     {user:userid},
+                     {$push:{address:datas}},
+                     {upsert:true,new:true}
+                )
+
+
                 res.redirect("/userhome")
               }else{
                 return res.render('login', { errorMessage: "incorrect password" });
