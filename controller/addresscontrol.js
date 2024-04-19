@@ -23,8 +23,9 @@ module.exports={
                {$push:{address:datas}},
                {upsert:true,new:true}
           )
-
-             res.redirect("/userprofile")    
+          const userdata=await signupdatabase.findOne({_id:id})
+          res.render("userprofile",{userdata})
+          
            }catch(error){
             console.log(`error is add${error}`);
            }
