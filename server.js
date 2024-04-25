@@ -31,6 +31,6 @@ app.use("/",userside)
 app.use("/",adminside)
 
 
-app.listen(3000,()=>{
+app.listen(4000,()=>{
     console.log("server is starting");
 })
