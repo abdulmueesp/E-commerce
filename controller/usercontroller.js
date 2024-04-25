@@ -40,8 +40,8 @@ const transporter=nodemailer.createTransport(
 const mailOptions={
   from:process.env.email_user,
   to:email,
-  subject:"Reset your password",
-  html:`<p>You requested a password reset.Your OTP is ${otp}`
+  subject:"Shoprey",
+  html:`<p>Your OTP is ${otp}`
 };
 await transporter.sendMail(mailOptions);
 };
